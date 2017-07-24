@@ -1,5 +1,13 @@
 <template>
-	<v-header></v-header>
+	<div>
+		<v-header></v-header>
+		<div class="temp">
+			<router-link to="/">aaa</router-link>
+			<router-link to="/contacts">bbb</router-link>
+			<router-link to="/news">ccc</router-link>
+		</div>
+		<router-view></router-view>
+	</div>
 </template>
 
 <script>
@@ -19,7 +27,16 @@ export default {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
-	.show-panel {
-		font-size: .6rem;
+	.temp {
+		display: flex;
+		position: fixed;
+		bottom: 0;
+		width: 100%;
+	}
+	.temp > a {
+		display: block;
+		flex: 1;
+		font-size: .4rem;
+		text-align: center;
 	}
 </style>
