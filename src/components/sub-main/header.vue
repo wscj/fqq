@@ -62,8 +62,8 @@ export default {
 		height: 100%;
 	}
 	.add img {
-		width: .56rem;
-		height: .56rem;
-		margin: .22rem 0 0 .2rem;
+		width: .5rem;
+		height: .5rem;
+		margin: .25rem 0 0 .25rem;
 	}
 </style>

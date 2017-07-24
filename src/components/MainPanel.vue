@@ -1,18 +1,24 @@
 <template>
-	<v-header></v-header>
+	<div>
+		<v-header></v-header>
+		<router-view></router-view>
+		<v-footer></v-footer>
+	</div>
 </template>
 
 <script>
 import header from './sub-main/header.vue';
+import footer from './sub-main/footer.vue';
 export default {
-	name: 'showPanel',
+	name: 'mainPanel',
 	data () {
 		return {
-			msg: 'Show Panel'
+			msg: 'Main Panel'
 		}
 	},
 	components: {
-		vHeader: header
+		vHeader: header,
+		vFooter: footer
 	}
 }
 </script>

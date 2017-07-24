@@ -14,3 +14,4 @@ a,button{cursor:pointer;}
 h1,h2,h3,h4,h5,h6,em,strong,b{font-weight:normal;}
 del,ins,u,s,a,a:hover{text-decoration:none;}
 body,textarea,input,button,select,keygen,legend{font:14px/1.5 \5fae\8f6f\96c5\9ed1,\5b8b\4f53,arial;color:#333;outline:0;}
+html{background-color: #f9f9fb}
