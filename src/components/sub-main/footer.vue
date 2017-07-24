@@ -1,21 +1,23 @@
 <template>
 	<div class="footer">
-		<div>
+		<router-link to="/">
 			<img src="../../assets/img/msg_active.png">
 			<span>消息</span>
-		</div>
-		<div>
-			<!-- <a v-link="{path: '/show-panel'}"> -->
+		</router-link>
+		<router-link to="/contacts">
 			<img src="../../assets/img/user.png">
 			<span>联系人</span>
-				
-			</a>
-		</div>
-		<div>
+		</router-link>
+		<router-link to="/news">
 			<img src="../../assets/img/qzone.png">
 			<span>动态</span>
-		</div>
+		</router-link>
 	</div>
+	<!-- <div class="temp">
+			<router-link to="/">aaa</router-link>
+			<router-link to="/contacts">bbb</router-link>
+			<router-link to="/news">ccc</router-link>
+		</div> -->
 </template>
 
 <script>
@@ -39,7 +41,7 @@ export default {
 		display: flex;
 		background-color: #fff;
 	}
-	.footer > div {
+	.footer > a {
 		flex: 1;
 		height: 100%;
 		text-align: center;
