@@ -3,34 +3,34 @@ import Router from 'vue-router'
 import MainPanel from '@/components/MainPanel'
 import ShowPanel from '@/components/ShowPanel'
 import MsgList from '@/components/sub-main/MsgList'
-import Temp from '@/components/sub-main/Temp'
 import Contacts from '@/components/sub-main/Contacts'
+import Dynamic from '@/components/sub-main/Dynamic'
+import FriendsList from '@/components/sub-main/FriendsList'
+
+import Temp from '@/components/Temp'
 
 Vue.use(Router)
 
 export default new Router({
 	routes: [{
 		path: '/',
-		name: 'MainPanel',
 		component: MainPanel,
 		children:[{
-            path:'/',
-            component: Temp
-        }, {
-            path:'/msg-list',
+            path: '/',
             component: MsgList
         }, {
-            path:'/contacts',
-            component: Contacts
+            path: '/contacts',
+            component: Contacts,
+            children: [{
+            	path: '/',
+            	component: FriendsList
+            }]
+        }, {
+            path: '/dynamic',
+            component: Dynamic
         }]
 	}, {
 		path: '/show-panel',
-		name: 'ShowPanel',
 		component: ShowPanel,
-		// subRoutes: {
-		// 	'/a': {
-		// 		component: MsgList
-		// 	}
-		// }
 	}]
 })

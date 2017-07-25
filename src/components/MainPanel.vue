@@ -1,7 +1,9 @@
 <template>
 	<div>
 		<v-header></v-header>
-		<router-view></router-view>
+		<!-- <transition name="fade" mode="out-in"> -->
+			<router-view class="view"></router-view>
+		<!-- </transition> -->
 		<v-footer></v-footer>
 	</div>
 </template>

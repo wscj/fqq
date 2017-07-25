@@ -1,23 +1,22 @@
 <template>
 	<div class="footer">
 		<router-link to="/">
-			<img src="../../assets/img/msg_active.png">
+			<!-- <img src="../../assets/img/msg_active.png"> -->
+			<!-- <img v-bind:src="msgIcon"> -->
+			<b class="msg"></b>
 			<span>消息</span>
 		</router-link>
 		<router-link to="/contacts">
-			<img src="../../assets/img/user.png">
+			<!-- <img src="../../assets/img/user.png"> -->
+			<b class="contacts"></b>
 			<span>联系人</span>
 		</router-link>
-		<router-link to="/news">
-			<img src="../../assets/img/qzone.png">
+		<router-link to="/dynamic">
+			<!-- <img src="../../assets/img/qzone.png"> -->
+			<b class="dynamic"></b>
 			<span>动态</span>
 		</router-link>
 	</div>
-	<!-- <div class="temp">
-			<router-link to="/">aaa</router-link>
-			<router-link to="/contacts">bbb</router-link>
-			<router-link to="/news">ccc</router-link>
-		</div> -->
 </template>
 
 <script>
@@ -25,7 +24,7 @@ export default {
 	name: 'footer',
 	data () {
 		return {
-			msg: 'Footer'
+			msgIcon: '../../assets/img/msg_active.png'
 		}
 	}
 }
@@ -37,7 +36,7 @@ export default {
 		bottom: 0;
 		height: 1.2rem;
 		width: 100%;
-		border-top: 1px solid #ccc;
+		border-top: 1px solid #e6e6e6;
 		display: flex;
 		background-color: #fff;
 	}
@@ -46,13 +45,40 @@ export default {
 		height: 100%;
 		text-align: center;
 	}
-	.footer img {
+	.footer b {
+		display: inline-block;
 		width: .6rem;
+		height: .6rem;
 		margin-top: .12rem;
+		background-size: .6rem;
 	}
 	.footer span {
 		display: block;
 		font-size: .22rem;
 		color: #a0a0a0;
+	}
+	.msg {
+		background: url('../../assets/img/msg.png') no-repeat;
+	}
+	.contacts {
+		background: url('../../assets/img/user.png') no-repeat;
+	}
+	.dynamic {
+		background: url('../../assets/img/qzone.png') no-repeat;
+	}
+	.router-link-exact-active .msg {
+		background: url('../../assets/img/msg_active.png') no-repeat;
+		background-size: .6rem;
+	}
+	.router-link-exact-active .contacts {
+		background: url('../../assets/img/user_active.png') no-repeat;
+		background-size: .6rem;
+	}
+	.router-link-exact-active .dynamic {
+		background: url('../../assets/img/qzone_active.png') no-repeat;
+		background-size: .6rem;
+	}
+	.router-link-exact-active span {
+		color: #47bafe;
 	}
 </style>

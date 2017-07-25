@@ -1,22 +1,22 @@
 <template>
-	<div class="msg-list">
-	消息列表 
+	<div class="dynamic">
+	动态
 	</div>
 </template>
 
 <script>
 export default {
-	name: 'MsgList',
+	name: 'dynamic',
 	data () {
 		return {
-			msg: 'Footer'
+			msg: 'dynamic'
 		}
 	}
 }
 </script>
 
 <style scoped>
-	.msg-list {
+	.dynamic {
 		font-size: .6rem;
 		text-align: center;
 		margin-top: .2rem;

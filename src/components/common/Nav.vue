@@ -1,12 +1,10 @@
 <template>
 	<div class="nav">
-		<!-- <div> -->
-			<div v-for="item in navData" class="item">
-				<router-link :to="{ path: item.url }">
-					<span>{{ item.title }}<b></b></span>
-				</router-link>
-			</div>
-		<!-- </div> -->
+		<div v-for="item in navData" class="item">
+			<router-link :to="{ path: item.url }">
+				<span>{{ item.title }}<b></b></span>
+			</router-link>
+		</div>
 	</div>
 </template>
 
@@ -31,18 +29,6 @@ export default {
 				title: '通讯录',
 				url: '/contacts/address-book'
 			}, {
-				title: '通讯录',
-				url: '/contacts/address-book'
-			}, {
-				title: '通讯录',
-				url: '/contacts/address-book'
-			}, {
-				title: '通讯录',
-				url: '/contacts/address-book'
-			}, {
-				title: '通讯录',
-				url: '/contacts/address-book'
-			}, {
 				title: '公众号',
 				url: '/contacts/official-accounts'
 			}]
@@ -56,13 +42,13 @@ export default {
 		height: .8rem;
 		background-color: #fff;
 		overflow-x: auto;
-		display: flex;
-		/*white-space:nowrap;*/
-		/*overflow-x: scroll;*/
+		overflow-y: hidden;
+		white-space:nowrap;
+		font-size: 0;
 	}
 	.item {
-		/*flex-grow: 1;*/
-		/*padding: 0 .4rem;*/
+		display: inline-block;
+		padding: 0 .38rem;
 		font-size: .28rem;
 		line-height: .8rem;
 		text-align: center;
@@ -86,5 +72,9 @@ export default {
 		display: block;
 		height: .08rem;
 		background: #12b7f5;
+	}
+	.nav::-webkit-scrollbar {
+		width: 0;
+		height: 0;
 	}
 </style>
