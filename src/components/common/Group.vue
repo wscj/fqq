@@ -10,6 +10,10 @@
 				<div class="avatar">
 					<img :src="'/static/img/' + friend.account + '.jpg'">
 				</div>
+				<div class="text">
+					<p>{{ friend.name }}</p>
+					<span>[{{ friend.state }}] {{ friend.signature }}</span>
+				</div>
 			</li>
 		</ul>
 	</div>
@@ -80,6 +84,16 @@ export default {
 		width: .88rem;
 		height: .88rem;
 		border-radius: 50%;
+	}
+	.text {
+		flex: 1;
+	}
+	.text p {
+		margin-top: .16rem;
+	}
+	.text span {
+		color: #808080;
+		font-size: .26rem;
 	}
 	.expand[name=group] {
 		transform: rotate(90deg);

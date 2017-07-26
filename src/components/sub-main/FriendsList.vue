@@ -14,17 +14,61 @@ export default {
 		return {
 			groups: [{
 				name: '特别关心',
-				onlineCount: '3/3',
+				onlineCount: '2/3',
 				friends: [{
-					name: '张三',
+					name: '猴子',
 					sex: 1,
-					account: '6661',
-					signature: '2017加油！！！'
+					account: '6664',
+					signature: '2017加油！！！',
+					state: '手机在线'
 				}, {
-					name: '李四',
+					name: '西瓜',
 					sex: 1,
 					account: '6662',
-					signature: '好好学习天天向上'
+					signature: '好好学习 | 天天向上',
+					state: '4G在线'
+				}, {
+					name: '666',
+					sex: 1,
+					account: '6661',
+					signature: '做个美男子',
+					state: '离线'
+				}, {
+					name: '666',
+					sex: 1,
+					account: '6661',
+					signature: '做个美男子',
+					state: '离线'
+				}, {
+					name: '666',
+					sex: 1,
+					account: '6661',
+					signature: '做个美男子',
+					state: '离线'
+				}, {
+					name: '666',
+					sex: 1,
+					account: '6661',
+					signature: '做个美男子',
+					state: '离线'
+				}, {
+					name: '666',
+					sex: 1,
+					account: '6661',
+					signature: '做个美男子',
+					state: '离线'
+				}, {
+					name: '666',
+					sex: 1,
+					account: '6661',
+					signature: '做个美男子',
+					state: '离线'
+				}, {
+					name: '666',
+					sex: 1,
+					account: '6661',
+					signature: '做个美男子',
+					state: '离线'
 				}]
 			}, {
 				name: '我的好友',

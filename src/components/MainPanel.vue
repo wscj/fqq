@@ -2,7 +2,7 @@
 	<div>
 		<v-header></v-header>
 		<transition :name="transitionName" mode="out-in">
-			<router-view></router-view>
+			<router-view class="main"></router-view>
 		</transition>
 		<v-footer></v-footer>
 	</div>
@@ -35,17 +35,8 @@ export default {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
-	.temp {
-		display: flex;
-		position: fixed;
-		bottom: 0;
-		width: 100%;
-	}
-	.temp > a {
-		display: block;
-		flex: 1;
-		font-size: .4rem;
-		text-align: center;
+	.main {
+		padding-top: 1rem;
 	}
 	.slide-right-enter-active,
 	.slide-left-enter-active {

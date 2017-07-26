@@ -20,9 +20,13 @@ export default {
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
 	.header {
-		position: relative;
+		position: fixed;
+		top: 0;
+		left: 0;
+		width: 100%;
 		height: 1rem;
 		background: -webkit-linear-gradient(left top, #4f8cfe , #39b9fe);
+		z-index: 1;
 	}
 	.avatar {
 		position: absolute;
