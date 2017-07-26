@@ -1,9 +1,9 @@
 <template>
 	<div>
 		<v-header></v-header>
-		<!-- <transition name="fade" mode="out-in"> -->
-			<router-view class="view"></router-view>
-		<!-- </transition> -->
+		<transition :name="transitionName" mode="out-in">
+			<router-view></router-view>
+		</transition>
 		<v-footer></v-footer>
 	</div>
 </template>
@@ -12,15 +12,23 @@
 import header from './sub-main/header.vue';
 import footer from './sub-main/footer.vue';
 export default {
-	name: 'mainPanel',
 	data () {
 		return {
-			msg: 'Main Panel'
+			transitionName: 'slide-left'
 		}
 	},
 	components: {
 		vHeader: header,
 		vFooter: footer
+	},
+	watch: {
+		'$route' (to, from) {
+			if (to.path === '/') {
+				this.transitionName = 'slide-left';
+			}
+			this.transitionName = (to.path === '/' || (to.path === '/contacts' && from.path === '/dynamic')) ? 
+				'slide-left' : 'slide-right';
+		}
 	}
 }
 </script>
@@ -38,5 +46,24 @@ export default {
 		flex: 1;
 		font-size: .4rem;
 		text-align: center;
+	}
+	.slide-right-enter-active,
+	.slide-left-enter-active {
+		transition: all .2s;
+	}
+	.slide-left-leave-active {
+		/*transition: all .1s;*/
+	}
+	.slide-left-enter {
+		transform: translateX(-7.2rem);
+		opacity: 0;
+	}
+	.slide-left-leave-to {
+		/*transform: translateX(-500px);*/
+		/*opacity: 0;*/
+	}
+	.slide-right-enter {
+		transform: translateX(7.2rem);
+		opacity: 0;
 	}
 </style>

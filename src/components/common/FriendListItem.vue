@@ -1,5 +1,7 @@
 <template>
-	
+	<div>
+		
+	</div>
 </template>
 
 <script>
@@ -8,11 +10,6 @@ export default {
 		return {
 			msg: ''
 		}
-	},
-	components: {
-		vSearch: search,
-		vGotoItem: gotoItem,
-		vNav: nav
 	}
 }
 </script>

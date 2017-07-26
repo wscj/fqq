@@ -1,7 +1,7 @@
 <template>
 	<ul>
 		<li v-for="group in groups">
-			<v-group :group-name="group.name" :online-count="group.onlineCount"></v-group>
+			<v-group :groupInfo="group"></v-group>
 		</li>
 	</ul>
 </template>
@@ -18,12 +18,12 @@ export default {
 				friends: [{
 					name: '张三',
 					sex: 1,
-					account: '123888',
+					account: '6661',
 					signature: '2017加油！！！'
 				}, {
 					name: '李四',
 					sex: 1,
-					account: '123889',
+					account: '6662',
 					signature: '好好学习天天向上'
 				}]
 			}, {
