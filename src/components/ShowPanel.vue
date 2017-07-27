@@ -5,7 +5,6 @@
 
 <script>
 export default {
-	name: 'showPanel',
 	data () {
 		return {
 			msg: 'Show Panel!!!'

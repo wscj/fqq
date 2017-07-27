@@ -1,18 +1,14 @@
 <template>
-	<div class="footer">
-		<router-link to="/">
-			<!-- <img src="../../assets/img/msg_active.png"> -->
-			<!-- <img v-bind:src="msgIcon"> -->
+	<div class="footer" @click="click">
+		<router-link to="/" name="msg">
 			<b class="msg"></b>
 			<span>消息</span>
 		</router-link>
-		<router-link to="/contacts">
-			<!-- <img src="../../assets/img/user.png"> -->
+		<router-link to="/contacts" name="contacts">
 			<b class="contacts"></b>
 			<span>联系人</span>
 		</router-link>
-		<router-link to="/dynamic">
-			<!-- <img src="../../assets/img/qzone.png"> -->
+		<router-link to="/dynamic" name="dynamic">
 			<b class="dynamic"></b>
 			<span>动态</span>
 		</router-link>
@@ -21,10 +17,15 @@
 
 <script>
 export default {
-	name: 'footer',
 	data () {
 		return {
 			msgIcon: '../../assets/img/msg_active.png'
+		}
+	},
+	methods: {
+		click: function(event) {
+			var aTag = event.target.tagName === 'A' ? event.target : event.target.parentElement;
+			this.$emit('changePage', aTag.getAttribute('name'));
 		}
 	}
 }

@@ -1,10 +1,10 @@
 <template>
 	<div>
-		<v-header></v-header>
+		<v-header :title="headerTitle"></v-header>
 		<transition :name="transitionName" mode="out-in">
 			<router-view class="main"></router-view>
 		</transition>
-		<v-footer></v-footer>
+		<v-footer @changePage="setHeader"></v-footer>
 	</div>
 </template>
 
@@ -14,7 +14,8 @@ import footer from './sub-main/footer.vue';
 export default {
 	data () {
 		return {
-			transitionName: 'slide-left'
+			transitionName: 'slide-left',
+			headerTitle: '消息'
 		}
 	},
 	components: {
@@ -28,6 +29,21 @@ export default {
 			}
 			this.transitionName = (to.path === '/' || (to.path === '/contacts' && from.path === '/dynamic')) ? 
 				'slide-left' : 'slide-right';
+		}
+	},
+	methods: {
+		setHeader: function(page) {
+			switch (page) {
+			case 'msg':
+				this.headerTitle = '消息';
+				break;
+			case 'contacts':
+				this.headerTitle = '联系人';
+				break;
+			case 'dynamic':
+				this.headerTitle = '动态';
+				break;
+			}
 		}
 	}
 }

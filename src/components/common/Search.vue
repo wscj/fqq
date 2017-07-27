@@ -1,10 +1,8 @@
 <template>
 	<div class="search">
 		<div class="input">
-			<!-- <div> -->
-				<b></b>
-				<div class="text">{{ text }}</div>
-			<!-- </div> -->
+			<b></b>
+			<div class="text">{{ text }}</div>
 		</div>
 	</div>
 </template>
@@ -41,7 +39,6 @@ export default {
 		color: #a6a6a6;
 		font-family: 'Microsoft YaHei';
 		font-size: .28rem;
-		/*background-color: pink;*/
 	}
 	b {
 		width: .42rem;
@@ -50,6 +47,5 @@ export default {
 		background: url('../../assets/img/search.png') no-repeat;
 		background-size: .36rem;
 		background-position: center;
-		/*background-color: pink;*/
 	}
 </style>

@@ -1,19 +1,18 @@
 <template>
 	<div class="header">
 		<div class="avatar"><img src="../../assets/img/avatar.jpg"></div>
-		<span>消息</span>
+		<span>{{ title }}</span>
 		<div class="add"><img src="../../assets/img/add.png"></div>
 	</div>
 </template>
 
 <script>
 export default {
-	name: 'header',
 	data () {
 		return {
-			msg: 'Header'
 		}
-	}
+	},
+	props: ['title']
 }
 </script>
 

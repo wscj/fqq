@@ -17,7 +17,6 @@ import search from '../common/Search';
 import gotoItem from '../common/GotoItem';
 import nav from '../common/Nav';
 export default {
-	name: 'contacts',
 	data () {
 		return {
 			msg: ''

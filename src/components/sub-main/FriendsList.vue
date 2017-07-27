@@ -33,50 +33,26 @@ export default {
 					account: '6661',
 					signature: '做个美男子',
 					state: '离线'
-				}, {
-					name: '666',
-					sex: 1,
-					account: '6661',
-					signature: '做个美男子',
-					state: '离线'
-				}, {
-					name: '666',
-					sex: 1,
-					account: '6661',
-					signature: '做个美男子',
-					state: '离线'
-				}, {
-					name: '666',
-					sex: 1,
-					account: '6661',
-					signature: '做个美男子',
-					state: '离线'
-				}, {
-					name: '666',
-					sex: 1,
-					account: '6661',
-					signature: '做个美男子',
-					state: '离线'
-				}, {
-					name: '666',
-					sex: 1,
-					account: '6661',
-					signature: '做个美男子',
-					state: '离线'
-				}, {
-					name: '666',
-					sex: 1,
-					account: '6661',
-					signature: '做个美男子',
-					state: '离线'
 				}]
 			}, {
 				name: '我的好友',
-				onlineCount: '56/128',
-				friends: []
+				onlineCount: '2/2',
+				friends: [{
+					name: '圆头',
+					sex: 1,
+					account: '6663',
+					signature: '?????',
+					state: '手机在线'
+				}, {
+					name: '动感超人',
+					sex: 1,
+					account: '6665',
+					signature: '哈哈哈！！！',
+					state: '4G在线'
+				}]
 			}, {
 				name: '同学', 
-				onlineCount: '279/323',
+				onlineCount: '0/0',
 				friends: []
 			}]
 		}

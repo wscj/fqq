@@ -6,7 +6,6 @@
 
 <script>
 export default {
-	name: 'temp',
 	data () {
 		return {
 			msg: ''

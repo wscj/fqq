@@ -8,7 +8,6 @@
 
 <script>
 export default {
-	name: 'gotoItem',
 	data () {
 		return {
 			text: '新朋友',

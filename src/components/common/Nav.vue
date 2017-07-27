@@ -10,7 +10,6 @@
 
 <script>
 export default {
-	name: 'gotoItem',
 	data () {
 		return {
 			navData: [{
