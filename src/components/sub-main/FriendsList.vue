@@ -49,6 +49,36 @@ export default {
 					account: '6665',
 					signature: '哈哈哈！！！',
 					state: '4G在线'
+				}, {
+					name: '666',
+					sex: 1,
+					account: '6661',
+					signature: '做个美男子',
+					state: '离线'
+				}, {
+					name: '666',
+					sex: 1,
+					account: '6661',
+					signature: '做个美男子',
+					state: '离线'
+				}, {
+					name: '666',
+					sex: 1,
+					account: '6661',
+					signature: '做个美男子',
+					state: '离线'
+				}, {
+					name: '666',
+					sex: 1,
+					account: '6661',
+					signature: '做个美男子',
+					state: '离线'
+				}, {
+					name: '666',
+					sex: 1,
+					account: '6661',
+					signature: '做个美男子',
+					state: '离线'
 				}]
 			}, {
 				name: '同学', 

@@ -1,26 +1,40 @@
 <template>
-	<div>
-		<v-header :title="headerTitle"></v-header>
-		<transition :name="transitionName" mode="out-in">
-			<router-view class="main"></router-view>
-		</transition>
-		<v-footer @changePage="setHeader"></v-footer>
+	<div class="panel">
+		<div class="info-panel" :name="show">
+			<v-setting-panel></v-setting-panel>
+		</div>
+		<div class="shade" :name="show" @click="show = ''"></div>
+		<div class="main-panel" :name="show">
+			<v-header :parentData="headerData" @avatarClick="showMe"></v-header>
+			<div class="main-div">
+				<transition :name="transitionName" mode="out-in">
+					<router-view></router-view>
+				</transition>
+			</div>
+			<v-footer @changePage="setHeader"></v-footer>
+		</div>
 	</div>
 </template>
 
 <script>
-import header from './sub-main/header.vue';
-import footer from './sub-main/footer.vue';
+import header from './sub-main/Header.vue';
+import footer from './sub-main/Footer.vue';
+import SettingPanel from './sub-main/SettingPanel.vue';
 export default {
 	data () {
 		return {
 			transitionName: 'slide-left',
-			headerTitle: '消息'
+			headerData: {
+				title: '消息',
+				page: 'msg'
+			},
+			show: ''
 		}
 	},
 	components: {
 		vHeader: header,
-		vFooter: footer
+		vFooter: footer,
+		vSettingPanel: SettingPanel
 	},
 	watch: {
 		'$route' (to, from) {
@@ -35,39 +49,85 @@ export default {
 		setHeader: function(page) {
 			switch (page) {
 			case 'msg':
-				this.headerTitle = '消息';
+				this.headerData = {
+					title: '消息',
+					page: 'msg'
+				}
 				break;
 			case 'contacts':
-				this.headerTitle = '联系人';
+				this.headerData = {
+					title: '联系人',
+					page: 'contacts'
+				}
 				break;
 			case 'dynamic':
-				this.headerTitle = '动态';
+				this.headerData = {
+					title: '动态',
+					page: 'dynamic'
+				}
 				break;
 			}
+		},
+		showMe: function() {
+			this.show = 'show';
 		}
 	}
 }
 </script>
 
-<!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
-	.main {
-		padding-top: 1rem;
+	.temp {
+		flex: 1;
+		background: green;
+	}
+	.info-panel {
+		position: fixed;
+		height: 100%;
+		width: 5.6rem;
+		left: -5.6rem;
+		z-index: 2;
+		transition: left 250ms;
+		background-color: #fff;
+	}
+	.info-panel[name=show] {
+		left: 0;
+	}
+	.main-panel {
+		position: fixed;
+		left: 0;
+		height: 100%;
+		width: 100%;
+		transition: left 250ms;
+		display: flex;
+		flex-direction: column;
+	}
+	.main-div {
+		flex: 1;
+		overflow-x: hidden;
+		overflow-y: auto;
+	}
+	.main-panel[name=show] {
+		left: 5.6rem;
+	}
+	.shade {
+		opacity: 0;
+		transition: opacity 250ms;
+	}
+	.shade[name=show] {
+		position: fixed;
+		width: 100%;
+		height: 100%;
+		background: rgba(0, 0, 0, .36);
+		opacity: 1;
+		z-index: 1;
 	}
 	.slide-right-enter-active,
 	.slide-left-enter-active {
 		transition: all .2s;
 	}
-	.slide-left-leave-active {
-		/*transition: all .1s;*/
-	}
 	.slide-left-enter {
 		transform: translateX(-7.2rem);
 		opacity: 0;
-	}
-	.slide-left-leave-to {
-		/*transform: translateX(-500px);*/
-		/*opacity: 0;*/
 	}
 	.slide-right-enter {
 		transform: translateX(7.2rem);

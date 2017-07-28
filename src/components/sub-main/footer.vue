@@ -33,9 +33,7 @@ export default {
 
 <style scoped>
 	.footer {
-		position: fixed;
-		bottom: 0;
-		height: 1.2rem;
+		height: 1.222rem;
 		width: 100%;
 		border-top: 1px solid #e6e6e6;
 		display: flex;

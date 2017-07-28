@@ -1,5 +1,5 @@
 <template>
-	<div class="msg-list">
+	<div>
 		<v-search></v-search>
 		<ul>
 			<li v-for="chat in chats">
@@ -40,6 +40,36 @@ export default {
 				account: '6665',
 				lastTime: '昨天',
 				lastMsg: '[好咧]'
+			}, {
+				name: '动感超人',
+				account: '6665',
+				lastTime: '昨天',
+				lastMsg: '[好咧]'
+			}, {
+				name: '动感超人',
+				account: '6665',
+				lastTime: '昨天',
+				lastMsg: '[好咧]'
+			}, {
+				name: '动感超人',
+				account: '6665',
+				lastTime: '昨天',
+				lastMsg: '[好咧]'
+			}, {
+				name: '动感超人',
+				account: '6665',
+				lastTime: '昨天',
+				lastMsg: '[好咧]'
+			}, {
+				name: '动感超人',
+				account: '6665',
+				lastTime: '昨天',
+				lastMsg: '[好咧]'
+			}, {
+				name: '动感超人',
+				account: '6665',
+				lastTime: '昨天',
+				lastMsg: '[好咧]'
 			}]
 		}
 	},
@@ -51,8 +81,4 @@ export default {
 </script>
 
 <style scoped>
-	.msg-list {
-		font-size: .6rem;
-		text-align: center;
-	}
 </style>
