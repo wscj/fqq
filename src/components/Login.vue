@@ -43,9 +43,13 @@ export default {
 				this.$http.get('/login', options).then(
 					(resp) => {
 						if (resp.body.token) {
-							sessionStorage.token = resp.body.token;
+							localStorage.token = resp.body.token;
+							localStorage.user = JSON.stringify(resp.body.user);
 							window.location.href = '#/msg';
 							console.log('登录成功');
+						}
+						else {
+							F.warn(resp.body.error);
 						}
 					},
 					(resp) => { console.error('fail', resp);}

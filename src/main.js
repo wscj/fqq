@@ -11,7 +11,7 @@ Vue.http.interceptors.push(function(request, next) {
 
   // modify method
   // request.method = 'POST';
-  request.headers.set('Authorization', sessionStorage.token);
+  request.headers.set('Authorization', localStorage.token);
 
   // continue to next interceptor
   next(function(response) {

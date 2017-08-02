@@ -12,83 +12,28 @@ import Group from '../common/Group';
 export default {
 	data () {
 		return {
-			groups: [{
-				name: '特别关心',
-				onlineCount: '2/3',
-				friends: [{
-					name: '猴子',
-					sex: 1,
-					account: '6664',
-					signature: '2017加油！！！',
-					state: '手机在线'
-				}, {
-					name: '西瓜',
-					sex: 1,
-					account: '6662',
-					signature: '好好学习 | 天天向上',
-					state: '4G在线'
-				}, {
-					name: '666',
-					sex: 1,
-					account: '6661',
-					signature: '做个美男子',
-					state: '离线'
-				}]
-			}, {
-				name: '我的好友',
-				onlineCount: '2/2',
-				friends: [{
-					name: '圆头',
-					sex: 1,
-					account: '6663',
-					signature: '?????',
-					state: '手机在线'
-				}, {
-					name: '动感超人',
-					sex: 1,
-					account: '6665',
-					signature: '哈哈哈！！！',
-					state: '4G在线'
-				}, {
-					name: '666',
-					sex: 1,
-					account: '6661',
-					signature: '做个美男子',
-					state: '离线'
-				}, {
-					name: '666',
-					sex: 1,
-					account: '6661',
-					signature: '做个美男子',
-					state: '离线'
-				}, {
-					name: '666',
-					sex: 1,
-					account: '6661',
-					signature: '做个美男子',
-					state: '离线'
-				}, {
-					name: '666',
-					sex: 1,
-					account: '6661',
-					signature: '做个美男子',
-					state: '离线'
-				}, {
-					name: '666',
-					sex: 1,
-					account: '6661',
-					signature: '做个美男子',
-					state: '离线'
-				}]
-			}, {
-				name: '同学', 
-				onlineCount: '0/0',
-				friends: []
-			}]
+			groups: []
 		}
 	},
 	components: {
 		vGroup: Group
+	},
+	created () {
+		this.getData();
+	},
+	methods: {
+		getData: function() {
+			this.$http.get('/getFriendList').then(
+				(resp) => {
+					if (toString.call(resp.body.list) === '[object Array]') {
+						this.groups = resp.body.list
+					}
+				},
+				(resp) => {
+					console.error(resp);
+				}
+			)
+		}
 	}
 }
 </script>
