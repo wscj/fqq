@@ -3,7 +3,7 @@
 		<div class="group" @click="click">
 			<b :class="expandClass" name="group"></b>
 			<span>{{ groupInfo.name }}</span>
-			<i>{{ groupInfo.onlineCount }}</i>
+			<i>{{ groupInfo.online }}/{{ groupInfo.online + groupInfo.offline }}</i>
 		</div>
 		<ul :class="expandClass" name="list">
 			<li v-for="friend in groupInfo.friends">

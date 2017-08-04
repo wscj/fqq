@@ -20,6 +20,7 @@ export default {
 	},
 	created () {
 		this.getData();
+		console.log('created');
 	},
 	methods: {
 		getData: function() {
