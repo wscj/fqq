@@ -1,21 +1,25 @@
 <template>
-	<h1>dd</h1>
-	<!-- <v-header></v-header> -->
+	<div name="show-panel" class="show-panel">
+		<router-view></router-view>
+	</div>
 </template>
 
 <script>
 export default {
 	data () {
-		return {
-			msg: 'Show Panel!!!'
-		}
+		return {}
 	}
 }
 </script>
 
-<!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
 	.show-panel {
-		font-size: .6rem;
+		position: fixed;
+		top: 0;
+		left: 7.2rem;
+		width: 100%;
+		height: 100%;
+		transition: left 250ms;
+		z-index: 10;
 	}
 </style>

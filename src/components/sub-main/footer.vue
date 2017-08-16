@@ -1,14 +1,14 @@
 <template>
 	<div class="footer" @click="click">
-		<router-link to="/msg/" name="msg">
+		<router-link to="/" name="msg" replace>
 			<b class="msg"></b>
 			<span>消息</span>
 		</router-link>
-		<router-link to="/msg/contacts" name="contacts">
+		<router-link to="/contacts" name="contacts" replace>
 			<b class="contacts"></b>
 			<span>联系人</span>
 		</router-link>
-		<router-link to="/msg/dynamic" name="dynamic">
+		<router-link to="/dynamic" name="dynamic" replace>
 			<b class="dynamic"></b>
 			<span>动态</span>
 		</router-link>

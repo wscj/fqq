@@ -1,5 +1,5 @@
 <template>
-	<div class="search">
+	<div class="search" @click="clickEvent">
 		<div class="input">
 			<b></b>
 			<div class="text">{{ text }}</div>
@@ -14,6 +14,9 @@ export default {
 		return {
 			text: '搜索'
 		}
+	},
+	props: ['clickEvent'],
+	methods: {
 	}
 }
 </script>

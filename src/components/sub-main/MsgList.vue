@@ -1,6 +1,6 @@
 <template>
 	<div>
-		<v-search></v-search>
+		<v-search :clickEvent="showsearch"></v-search>
 		<ul>
 			<li v-for="chat in chats">
 				<v-msg-item :chatInfo="chat"></v-msg-item>
@@ -37,6 +37,9 @@ export default {
 					console.error(resp);
 				}
 			)
+		},
+		showsearch: function(event) {
+			this.$router.push('/show-panel');
 		}
 	}
 }

@@ -15,10 +15,14 @@ Vue.http.interceptors.push(function(request, next) {
 
   // continue to next interceptor
   next(function(response) {
-  	if (response.headers.map && response.headers.map.Verify) {
-  		window.location.href = '#/';
-  		response.verify = 'fail';
-  	}
+    if (response.headers.map && response.headers.map.verify) {
+    	this.$router.push({
+    		path: '/login',
+    		query: {
+    			redirect: this.$route.fullPath
+    		}
+    	});
+    }
   });
 });
 

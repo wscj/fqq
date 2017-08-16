@@ -7,37 +7,62 @@ import Contacts from '@/components/sub-main/Contacts'
 import Dynamic from '@/components/sub-main/Dynamic'
 import FriendsList from '@/components/sub-main/FriendsList'
 import Login from '@/components/Login'
+import Setting from '@/components/sub-show/Setting'
 
 import Temp from '@/components/Temp'
 
 Vue.use(Router)
 
-
 const router = new Router({
 	routes: [{
-		path: '/msg',
+        path: '/login',
+        component: Login,
+    }, {
+		path: '/',
 		component: MainPanel,
+        meta: { requiresAuth: true },
 		children:[{
             path: '/',
             component: MsgList
         }, {
-            path: '/msg/contacts',
+            path: '/contacts',
             component: Contacts,
             children: [{
             	path: '/',
             	component: FriendsList
             }]
         }, {
-            path: '/msg/dynamic',
+            path: '/dynamic',
             component: Dynamic
-        }]
+        }],
     }, {
         path: '/show-panel',
         component: ShowPanel,
-    }, {
-        path: '/',
-        component: Login,
+        meta: { requiresAuth: true },
+        children: [{
+            path: '/',
+            component: Setting
+        }]
 	}]
+});
+
+router.beforeEach((to, from, next) => {
+    if (to.matched[0] && to.matched[0].meta.requiresAuth) {
+        if (!localStorage.token) {
+            next({
+                path: '/login',
+                query: {
+                    redirect: to.fullPath
+                }
+            });
+        }
+        else {
+            next();
+        }
+    }
+    else {
+        next();
+    }
 });
 
 export default router

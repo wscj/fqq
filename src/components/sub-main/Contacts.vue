@@ -1,6 +1,6 @@
 <template>
 	<div class="contacts">
-		<v-search></v-search>
+		<v-search :clickEvent="showsearch"></v-search>
 		<hr>
 		<v-goto-item></v-goto-item>
 		<hr>
@@ -26,6 +26,11 @@ export default {
 		vSearch: search,
 		vGotoItem: gotoItem,
 		vNav: nav
+	},
+	methods: {
+		showsearch: function() {
+			
+		}
 	}
 }
 </script>

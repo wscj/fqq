@@ -1,13 +1,11 @@
 <template>
-	<div>Temp</div>
+	<div>temp</div>
 </template>
 
 <script>
 export default {
-	data () {
-		return {
-			msgIcon: ''
-		}
+	created: function() {
+		console.log(999999);
 	}
 }
 </script>

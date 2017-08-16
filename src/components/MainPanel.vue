@@ -40,9 +40,6 @@ export default {
 	},
 	watch: {
 		'$route' (to, from) {
-			if (to.path === '/') {
-				this.transitionName = 'slide-left';
-			}
 			this.transitionName = (to.path === '/' || (to.path === '/contacts' && from.path === '/dynamic')) ? 
 				'slide-left' : 'slide-right';
 		}
@@ -73,15 +70,14 @@ export default {
 		showMe: function() {
 			this.show = 'show';
 		}
+	},
+	created () {
+		// console.log('main created');
 	}
 }
 </script>
 
 <style scoped>
-	.temp {
-		flex: 1;
-		background: green;
-	}
 	.info-panel {
 		position: fixed;
 		height: 100%;
@@ -109,7 +105,7 @@ export default {
 		overflow-y: auto;
 	}
 	.main-panel[name=show] {
-		left: 5.6rem;
+		left: 5.6rem !important;
 	}
 	.shade {
 		opacity: 0;

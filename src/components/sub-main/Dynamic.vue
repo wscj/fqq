@@ -1,6 +1,6 @@
 <template>
-	<div class="dynamic">
-		动态
+	<div class="dynamic" @click="click">
+		Dynamic
 	</div>
 </template>
 
@@ -10,6 +10,11 @@ export default {
 	data () {
 		return {
 			msg: 'dynamic'
+		}
+	},
+	methods: {
+		click () {
+			
 		}
 	}
 }

@@ -1,12 +1,12 @@
 <template>
-	<div class="login">
+	<div class="login" @keyup.enter="login">
 		<!-- <div class="avatar">
 			<img src="/static/img/avatar.jpg">
 		</div> -->
 		<div class="info">
 			<div class="account">
 				<b class="user"></b>
-				<input type="number" placeholder="4位数字帐号" v-model="account">
+				<input type="number" id="account" placeholder="4位数字帐号" v-model="account">
 			</div>
 			<div class="password">
 				<b class="pwd"></b>
@@ -45,7 +45,7 @@ export default {
 						if (resp.body.token) {
 							localStorage.token = resp.body.token;
 							localStorage.user = JSON.stringify(resp.body.user);
-							window.location.href = '#/msg';
+							this.$router.replace(this.$route.query.redirect || '/');
 							console.log('登录成功');
 						}
 						else {
@@ -57,11 +57,11 @@ export default {
 			}
 		},
 		test: function() {
-			this.$http.post('/post_test', { a: 123 }).then((resp) => {
-				if (resp.verify === 'fail') return;
-				console.log(resp); 
-			});
+			
 		}
+	},
+	mounted: function() {
+		document.getElementById('account').focus();
 	}
 }
 </script>
