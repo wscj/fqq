@@ -22,7 +22,7 @@
 		<div class="bottom">
 			<i class="temperature">31°</i>
 			<div class="toolbar">
-				<div class="setting"><b></b><span>设置</span></div>
+				<div class="setting" @click="set"><b></b><span>设置</span></div>
 				<div class="moon"><b></b><span>夜间</span></div>
 				<div>广州市</div>
 			</div>
@@ -34,6 +34,11 @@
 export default {
 	data () {
 		return {
+		}
+	},
+	methods: {
+		set: function() {
+			this.$router.push('/show-panel');
 		}
 	}
 }
@@ -99,9 +104,12 @@ export default {
 	}
 	.bottom {
 		height: 2.1rem;
+		display: flex;
+		flex-direction: column;
 	}
 	.toolbar {		
 		display: flex;
+		flex: 1;
 	}
 	.toolbar > div {
 		flex: 1;

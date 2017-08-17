@@ -19,7 +19,8 @@ export default {
 		left: 7.2rem;
 		width: 100%;
 		height: 100%;
-		transition: left 250ms;
+		/*transition: left 250ms;*/
 		z-index: 10;
+		background-color: #f9f9fb;
 	}
 </style>

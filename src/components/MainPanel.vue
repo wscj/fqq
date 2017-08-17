@@ -1,6 +1,6 @@
 <template>
 	<div class="panel">
-		<div class="info-panel" :name="show">
+		<div class="info-panel" :name="show" id="info-panel">
 			<v-setting-panel></v-setting-panel>
 		</div>
 		<div class="shade" :name="show" @click="show = ''"></div>
@@ -68,6 +68,11 @@ export default {
 			}
 		},
 		showMe: function() {
+			// Velocity(document.getElementById('info-panel'), {
+			// 	left: '0rem'
+			// }, {
+			// 	duration: 250
+			// })
 			this.show = 'show';
 		}
 	},
@@ -78,8 +83,14 @@ export default {
 </script>
 
 <style scoped>
-	.info-panel {
+	.panel {
 		position: fixed;
+		width: 100%;
+		height: 100%;
+		/*transition: left 250ms;*/
+	}
+	.info-panel {
+		position: absolute;
 		height: 100%;
 		width: 5.6rem;
 		left: -5.6rem;
@@ -91,7 +102,7 @@ export default {
 		left: 0;
 	}
 	.main-panel {
-		position: fixed;
+		position: absolute;
 		left: 0;
 		height: 100%;
 		width: 100%;

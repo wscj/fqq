@@ -27,38 +27,44 @@ export default {
 		beforeEnter: function(el) {
 		},
 		enter: function(el, done) {
-			if (el.getAttribute('name') === 'show-panel') {
-				setTimeout(function() {
-					el.style.left = '0';
-					done();
-				}, 0)
-			}
-			else {
-				setTimeout(function() {
-					el.lastChild.style.left = '0';
-					done();
-				}, 10)
-			}
+			done();
+			// if (el.getAttribute('name') === 'show-panel') {
+			// 	setTimeout(function() {
+			// 		el.style.left = '0rem';
+			// 		done();
+			// 	}, 0)
+			// }
+			// else {
+			// 	setTimeout(function() {
+			// 		el.style.left = '0rem';
+			// 		done();
+			// 	}, 10)
+			// }
 		},
 		afterEnter: function(el) {
+			Velocity(el, { left: '0rem' }, { duration: 250, easing: 'ease' });
 		},
 		beforeLeave: function(el) {
 
 		},
 		leave: function(el, done) {
 
-			if (el.getAttribute('name') === 'show-panel') {
-				el.style.left = '7.2rem';
-				setTimeout(function() {
-					done();
-				}, 250);
-			}
-			else {
-				el.lastChild.style.left = '-7.2rem';
-				setTimeout(function() {
-					done();
-				}, 250);
-			}
+			const left = el.getAttribute('name') === 'show-panel' ? '7.2rem' : '-7.2rem';
+
+			Velocity(el, { left: left }, { duration: 250, complete: done, easing: 'ease' });
+
+			// if (el.getAttribute('name') === 'show-panel') {
+			// 	el.style.left = '7.2rem';
+			// 	setTimeout(function() {
+			// 		done();
+			// 	}, 250);
+			// }
+			// else {
+			// 	el.style.left = '-7.2rem';
+			// 	setTimeout(function() {
+			// 		done();
+			// 	}, 250);
+			// }
 		},
 		afterLeave: function(el) {
 		}

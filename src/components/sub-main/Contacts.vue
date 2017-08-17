@@ -2,8 +2,8 @@
 	<div class="contacts">
 		<v-search :clickEvent="showsearch"></v-search>
 		<hr>
-		<v-goto-item></v-goto-item>
-		<hr>
+		<v-goto-item :text="'新朋友'"></v-goto-item>
+		<!-- <hr> -->
 		<div class="blank"></div>
 		<hr>
 		<v-nav></v-nav>
@@ -30,7 +30,8 @@ export default {
 	methods: {
 		showsearch: function() {
 			
-		}
+		},
+		emptyFn: function() {}
 	}
 }
 </script>

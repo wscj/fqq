@@ -1,8 +1,8 @@
 <template>
-	<div class="goto-item">
+	<div class="goto-item" @click="click">
 		<div v-if="icon"></div>
 		<p>{{ text }}</p>
-		<b></b>
+		<b v-if="!hasGotoIcon"></b>
 	</div>
 </template>
 
@@ -10,8 +10,12 @@
 export default {
 	data () {
 		return {
-			text: '新朋友',
-			icon: ''
+		}
+	},
+	props: ['text', 'icon', 'hasGotoIcon'],
+	methods: {
+		click: function() {
+			this.$emit('itemClick')
 		}
 	}
 }
@@ -22,6 +26,7 @@ export default {
 		display: flex;
 		height: .8rem;
 		background-color: #fff;
+		border-bottom: 1px solid #e6e6e6;
 	}
 	p {
 		flex: 1;
