@@ -3,9 +3,9 @@
 		<div class="info-panel" :name="show" id="info-panel">
 			<v-setting-panel></v-setting-panel>
 		</div>
-		<div class="shade" :name="show" @click="show = ''"></div>
+		<div class="shade" :name="show" @click="hideSidebar"></div>
 		<div class="main-panel" :name="show">
-			<v-header :parentData="headerData" @avatarClick="showMe"></v-header>
+			<v-header :parentData="headerData"></v-header>
 			<div class="main-div">
 				<transition :name="transitionName" mode="out-in">
 					<keep-alive>
@@ -29,8 +29,7 @@ export default {
 			headerData: {
 				title: '消息',
 				page: 'msg'
-			},
-			show: ''
+			}
 		}
 	},
 	components: {
@@ -67,17 +66,14 @@ export default {
 				break;
 			}
 		},
-		showMe: function() {
-			// Velocity(document.getElementById('info-panel'), {
-			// 	left: '0rem'
-			// }, {
-			// 	duration: 250
-			// })
-			this.show = 'show';
+		hideSidebar: function() {
+			this.$store.commit('hideSidebar');
 		}
 	},
-	created () {
-		// console.log('main created');
+	computed: {
+		show: function() {
+			return this.$store.state.sidebar;
+		}
 	}
 }
 </script>

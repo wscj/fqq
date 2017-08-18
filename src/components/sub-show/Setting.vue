@@ -27,11 +27,12 @@ export default {
 	},
 	methods: {
 		goback: function() {
-			this.$router.go(-1);
+			this.$router.back();
 		},
 		//退出登录
 		logout: function() {
 			localStorage.clear();
+			this.$store.commit('hideSidebar');
 			this.$router.back();
 		}
 	}

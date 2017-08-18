@@ -2,9 +2,11 @@ import Vue from 'vue'
 import App from './App'
 import router from './router'
 import Resource from 'vue-resource'
+import Vuex from 'vuex'
 
-Vue.config.productionTip = false
-Vue.use(Resource)
+Vue.config.productionTip = false;
+Vue.use(Resource);
+Vue.use(Vuex);
 
 //在发送http时带上token验证信息
 Vue.http.interceptors.push(function(request, next) {
@@ -26,9 +28,23 @@ Vue.http.interceptors.push(function(request, next) {
   });
 });
 
+const store = new Vuex.Store({
+  state: {
+    count: 0,
+    sidebar: ''
+  },
+  mutations: {
+    increment: state => state.count++,
+    decrement: state => state.count--,
+    showSidebar: state => state.sidebar = 'show',
+    hideSidebar: state => state.sidebar = '',
+  }
+})
+
 /* eslint-disable no-new */
 new Vue({
   el: '#app',
   router,
+  store,
   render: h => h(App)
 })

@@ -19,7 +19,8 @@ export default {
 	props: ['parentData'],
 	methods: {
 		imgClick: function() {
-			this.$emit('avatarClick');
+			this.$store.commit('showSidebar');
+			// this.$emit('avatarClick');
 		}
 	}
 }
