@@ -39,7 +39,7 @@ export default {
 			)
 		},
 		showsearch: function(event) {
-			this.$router.push('/show-panel');
+			this.$router.push('/no-transition-panel/');
 		}
 	}
 }

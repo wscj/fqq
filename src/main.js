@@ -30,12 +30,9 @@ Vue.http.interceptors.push(function(request, next) {
 
 const store = new Vuex.Store({
   state: {
-    count: 0,
     sidebar: ''
   },
   mutations: {
-    increment: state => state.count++,
-    decrement: state => state.count--,
     showSidebar: state => state.sidebar = 'show',
     hideSidebar: state => state.sidebar = '',
   }

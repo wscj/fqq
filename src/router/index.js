@@ -8,6 +8,9 @@ import Dynamic from '@/components/sub-main/Dynamic'
 import FriendsList from '@/components/sub-main/FriendsList'
 import Login from '@/components/Login'
 import Setting from '@/components/sub-show/Setting'
+import NoTransitionPanel from '@/components/NoTransitionPanel'
+import SearchPage from '@/components/sub-no-trans/SearchPage'
+import Conversation from '@/components/sub-show/Conversation'
 
 import Temp from '@/components/Temp'
 
@@ -42,6 +45,17 @@ const router = new Router({
         children: [{
             path: '/',
             component: Setting
+        }, {
+            path: '/show-panel/conversation',
+            component: Conversation
+        }]
+    }, {
+        path: '/no-transition-panel',
+        component: NoTransitionPanel,
+        meta: { requiresAuth: true },
+        children: [{
+            path: '/',
+            component: SearchPage
         }]
 	}]
 });

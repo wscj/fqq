@@ -61,7 +61,7 @@ export default {
 		}
 	},
 	mounted: function() {
-		document.getElementById('account').focus();
+		this.$el.querySelector('#account').focus();
 	}
 }
 </script>

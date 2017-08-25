@@ -1,10 +1,10 @@
 <template>
 	<div class="panel">
-		<div class="info-panel" :name="show" id="info-panel">
+		<div class="info-panel" :name="this.$store.state.sidebar" id="info-panel">
 			<v-setting-panel></v-setting-panel>
 		</div>
-		<div class="shade" :name="show" @click="hideSidebar"></div>
-		<div class="main-panel" :name="show">
+		<div class="shade" :name="this.$store.state.sidebar" @click="hideSidebar"></div>
+		<div class="main-panel" :name="this.$store.state.sidebar">
 			<v-header :parentData="headerData"></v-header>
 			<div class="main-div">
 				<transition :name="transitionName" mode="out-in">
@@ -70,11 +70,11 @@ export default {
 			this.$store.commit('hideSidebar');
 		}
 	},
-	computed: {
-		show: function() {
-			return this.$store.state.sidebar;
-		}
-	}
+	// computed: {
+	// 	show: function() {
+	// 		return this.$store.state.sidebar;
+	// 	}
+	// }
 }
 </script>
 
