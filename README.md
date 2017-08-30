@@ -1,6 +1,12 @@
 # fqq
 
-> A Vue.js project
+`fqq`是仿QQ的意思，创建这个项目主要是为了熟悉`Vue.js`，也顺便学习了`Express.js`。虽然整体操作起来功能不多，但挺多细节是有做处理的，花费的时间也不少，毕竟前后台都自己实现。
+
+#### 技术点
+
+* Vue.js vue-resource vuex vue-router
+* Node.js Express.js
+* Sqlite
 
 ## Build Setup
 
@@ -8,7 +14,7 @@
 # install dependencies
 npm install
 
-# serve with hot reload at localhost:8080
+# serve with hot reload at localhost:3000
 npm run dev
 
 # build for production with minification
@@ -17,5 +23,3 @@ npm run build
 # build for production and view the bundle analyzer report
 npm run build --report
 ```
-
-For detailed explanation on how things work, checkout the [guide](http://vuejs-templates.github.io/webpack/) and [docs for vue-loader](http://vuejs.github.io/vue-loader).
