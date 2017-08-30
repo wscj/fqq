@@ -1,7 +1,7 @@
 <template>
 	<div class="header">
-		<div class="avatar" @click="imgClick"><img src="/static/img/avatar.jpg"></div>
-		<span>{{ parentData.title }}</span>
+		<div class="avatar" @click="imgClick"><img :src="'/static/img/' + this.$store.state.user.account + '.jpg'"></div>
+		<span @click="test">{{ parentData.title }}</span>
 		<div :class="parentData.page" name="add">
 			<span name="msg"></span>
 			<span name="contacts">添加</span>
@@ -12,15 +12,14 @@
 
 <script>
 export default {
-	data () {
-		return {
-		}
-	},
 	props: ['parentData'],
 	methods: {
 		imgClick: function() {
 			this.$store.commit('showSidebar');
 			// this.$emit('avatarClick');
+		},
+		test () {
+			
 		}
 	}
 }

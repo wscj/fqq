@@ -23,6 +23,7 @@ import header from './sub-main/Header.vue';
 import footer from './sub-main/Footer.vue';
 import SettingPanel from './sub-main/SettingPanel.vue';
 export default {
+	name: 'mainPanel',
 	data () {
 		return {
 			transitionName: 'slide-left',
@@ -70,6 +71,14 @@ export default {
 			this.$store.commit('hideSidebar');
 		}
 	},
+	activated () {
+		if (this.$route.query.reset) {
+			this.$el.style.left = '0rem';
+		}
+	},
+	// created () {
+	// 	console.log('main');
+	// },
 	// computed: {
 	// 	show: function() {
 	// 		return this.$store.state.sidebar;
@@ -90,7 +99,7 @@ export default {
 		height: 100%;
 		width: 5.6rem;
 		left: -5.6rem;
-		z-index: 2;
+		z-index: 3;
 		transition: left 250ms;
 		background-color: #fff;
 	}
@@ -124,7 +133,7 @@ export default {
 		height: 100%;
 		background: rgba(0, 0, 0, .36);
 		opacity: 1;
-		z-index: 1;
+		z-index: 2;
 	}
 	.slide-right-enter-active,
 	.slide-left-enter-active {

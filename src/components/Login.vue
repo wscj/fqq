@@ -1,12 +1,13 @@
 <template>
 	<div class="login" @keyup.enter="login">
-		<!-- <div class="avatar">
-			<img src="/static/img/avatar.jpg">
-		</div> -->
+		<div class="avatar">
+			<img :src="'/static/img/' + avatar + '.jpg'">
+		</div>
 		<div class="info">
 			<div class="account">
 				<b class="user"></b>
-				<input type="number" id="account" placeholder="4位数字帐号" v-model="account">
+				<input type="number" id="account" @input="input" v-model="account"
+					 placeholder="4位数字帐号" autocomplete="off">
 			</div>
 			<div class="password">
 				<b class="pwd"></b>
@@ -15,9 +16,9 @@
 			<div class="btn">
 				<input type="button" @click="login" value="登录">
 			</div>
-			<div class="btn">
+			<!-- <div class="btn">
 				<input type="button" @click="test" value="测试">
-			</div>
+			</div> -->
 		</div>
 	</div>
 </template>
@@ -27,16 +28,33 @@ export default {
 	data () {
 		return {
 			account: '',
-			pwd: ''
+			pwd: '',
+			avatar: 'default'
 		}
 	},
 	methods: {
-		login: function() {
+		input (e) {
+			var value = e.target.value;
+			if (value.length === 4) {
+				this.$http.get(`/static/img/${value}.jpg`).then(
+					r => {
+						if (r.body !== "Verify fail!") {
+							this.avatar = value;
+						}
+					}
+				)
+			} else {
+				if (this.avatar !== 'default') {
+					this.avatar = 'default';
+				}
+			}
+		},
+		login () {
 			if (!this.account.trim().length) {
-				F.warn('帐号不能为空');
+				this.fn.warn('帐号不能为空');
 			}
 			else if (!this.pwd.trim().length) {
-				F.warn('密码不能为空');
+				this.fn.warn('密码不能为空');
 			}
 			else {
 				const options = { params: { account: this.account.trim(), pwd: md5(this.pwd.trim()) } };
@@ -45,18 +63,19 @@ export default {
 						if (resp.body.token) {
 							localStorage.token = resp.body.token;
 							localStorage.user = JSON.stringify(resp.body.user);
-							this.$router.replace(this.$route.query.redirect || '/');
+							this.$router.replace({ path: this.$route.query.redirect || '/', query: { reset: 1 }});
+							this.$store.commit('setUser', resp.body.user);
 							console.log('登录成功');
 						}
 						else {
-							F.warn(resp.body.error);
+							this.fn.warn(resp.body.error);
 						}
 					},
 					(resp) => { console.error('fail', resp);}
 				)
 			}
 		},
-		test: function() {
+		test () {
 			
 		}
 	},
@@ -80,6 +99,7 @@ export default {
 		justify-content: center;
 		align-items: center;
 		height: 5rem;
+		/*background-color: pink;*/
 	}
 	.avatar img {
 		width: 2.6rem;
@@ -87,7 +107,7 @@ export default {
 		border-radius: 50%;
 	}
 	.info {
-		margin: 1.8rem 0 0 0;
+		/*margin: 1.8rem 0 0 0;*/
 	}
 	.account,
 	.password {

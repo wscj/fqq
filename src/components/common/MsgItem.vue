@@ -1,5 +1,5 @@
 <template>
-	<div class="msg-item">
+	<div class="msg-item" @click="click">
 		<div class="avatar">
 			<img :src="'/static/img/' + chatInfo.account + '.jpg'">
 		</div>
@@ -20,6 +20,18 @@ export default {
 		}
 	},
 	props: ['chatInfo'],
+	methods: {
+		click () {
+			this.$router.push({ 
+				path: '/show-panel/conversation',
+				query: { 
+					friendID: this.chatInfo.friendID, 
+					name: this.chatInfo.name,
+					account: this.chatInfo.account
+				}
+			});
+		}
+	}
 }
 </script>
 

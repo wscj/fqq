@@ -5,8 +5,8 @@
 				<img src="/static/img/qr_code.png">
 			</div>
 			<div class="top-center">
-				<img src="/static/img/avatar.jpg">
-				<span>Q昵称</span>
+				<img :src="'/static/img/' + this.$store.state.user.account + '.jpg'">
+				<span>{{ this.$store.state.user.name }}</span>
 			</div>
 			<div class="top-bottom">
 				<div>
@@ -14,7 +14,7 @@
 					<img src="/static/img/star.png">
 					<img src="/static/img/star.png">
 				</div>
-				<p>做自己喜欢做的事</p>
+				<p>{{ this.$store.state.user.signature }}</p>
 			</div>
 		</div>
 		<div class="center">

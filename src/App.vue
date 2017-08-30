@@ -8,7 +8,7 @@
 			@leave="leave"
 			@after-leave="afterLeave"
 			:css="false">
-			<keep-alive>
+			<keep-alive include='mainPanel'>
 				<router-view></router-view>
 			</keep-alive>
 		</transition>

@@ -1,6 +1,7 @@
 <template>
 	<div class="dynamic" @click="click">
 		Dynamic
+		<!-- <router-view></router-view> -->
 	</div>
 </template>
 

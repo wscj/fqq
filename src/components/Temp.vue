@@ -1,11 +1,14 @@
 <template>
-	<div>temp</div>
+	<div>{{ name }}</div>
 </template>
 
 <script>
 export default {
-	created: function() {
-		console.log(999999);
+	data () {
+		return {
+			name: 'temp',
+			test: 'tempAAA'
+		}
 	}
 }
 </script>

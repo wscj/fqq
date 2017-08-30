@@ -22,7 +22,7 @@ export default {
 		vSearch: search,
 		vMsgItem: msgItem
 	},
-	created () {
+	activated () {
 		this.getData();
 	},
 	methods: {
@@ -30,7 +30,7 @@ export default {
 			this.$http.get('/getMsgList').then(
 				(resp) => {
 					if (toString.call(resp.body.list) === '[object Array]') {
-						this.chats = resp.body.list
+						this.chats = resp.body.list;
 					}
 				},
 				(resp) => {

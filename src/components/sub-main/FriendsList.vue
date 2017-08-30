@@ -18,9 +18,8 @@ export default {
 	components: {
 		vGroup: Group
 	},
-	created () {
+	activated () {
 		this.getData();
-		console.log('created');
 	},
 	methods: {
 		getData: function() {

@@ -11,7 +11,7 @@
  	const fse = require("fs-extra");
     const sqlite3 = require('sqlite3').verbose();
 	const dbPath = './fqq.db';
-
+	// fse.unlinkSync(dbPath)
 	const isDbExists = fse.existsSync(dbPath);
 
 	if (!isDbExists) {
@@ -176,7 +176,7 @@
 			union select 6, 3, '3_6', '明天记得带过来，可能会下大暴雨啊', datetime(1493941468, 'unixepoch')
 			union select 3, 6, '3_6', 'ok', datetime(1493941469, 'unixepoch')
 			union select 6, 4, '4_6', '是的，就是这么6', datetime(1493941436, 'unixepoch')
-			union select 6, 5, '5_6', '[好咧]', datetime(1493941426, 'unixepoch')
+			union select 5, 6, '5_6', '[好咧]', datetime(1493941426, 'unixepoch')
 		`);
 
 		(function exec(sqls) {
@@ -189,6 +189,66 @@
 				Sqlite.isInited = true;
 			}
 		}(sqls));
+	}
+
+	/**
+	 * 添加会话消息，将用户发送的消息保存至数据库
+	 * @method addMsg
+	 * @param {object} arg
+	 * @param {number} arg.fromID 发送消息的用户ID
+	 * @param {number} arg.toID 接收消息的用户ID
+	 * @param {number} arg.groupID 群ID，如果不是群消息则该值为0
+	 * @param {string} arg.msg 消息内容
+	 */
+	Sqlite.addMsg = function(arg) {
+		const cID = Math.min(arg.fromID, arg.toID) + '_' + Math.max(arg.fromID, arg.toID);
+		const sql = `
+			insert into t_msg (from_id, to_id, conversation_id, group_id, content, time)
+			values (${arg.fromID}, ${arg.toID}, '${cID}', ${arg.groupID || 0}, '${arg.msg}', current_timestamp)
+		`;
+		db.run(sql, err => {
+			err && console.error(err);
+		});
+	}
+
+	/**
+	 * 获取会话内容
+	 * @method getConversation
+	 * @param  {object} arg
+	 * @param {number} arg.uid 发送请求用户的ID
+	 * @param {number} arg.friendID 会话对象的ID
+	 * @param {number} [arg.count=10] 最多获取多少条记录（如果消息太多则通过下拉刷新获取更多）
+	 * @param {number} [arg.conversation_id=0] 会话ID，如果为0则获取最新的消息记录，否则获取比该ID更旧的记录
+	 * @param {function} arg.callback 回调函数，`list`为返回的会话列表
+	 */
+	Sqlite.getConversation = function(arg) {
+		const sql = `
+			select a.*, b.account
+			from (
+				select rowid, *
+				from   t_msg
+				where  ${arg.conversation_id ? 'rowid < ' + arg.conversation_id : ''}
+						(from_id = ${arg.uid} and to_id = ${arg.friendID})
+							or (from_id = ${arg.friendID} and to_id = ${arg.uid})
+				order  by time
+				limit  ${arg.count || 10}) a, t_user b
+			where  a.from_id = b.rowid
+		`;
+		db.all(sql, (err, rows) => {
+			err && console.error(err);
+			if (!err && arg.callback) {
+				const list  = rows.map(row => {
+					return {
+						conversation_id: row.rowid,
+						dir: row.from_id === arg.uid ? 'right' : 'left',
+						msg: row.content,
+						time: row.time,
+						avatar: row.account
+					}
+				});
+				arg.callback({ error: 0, list: list });
+			}
+		})
 	}
 
 	/**
@@ -253,12 +313,11 @@
 	 * 获取消息列表
 	 * @method getMsgList
 	 * @param  {object} arg
-	 * @param {string} arg.account 帐号
 	 * @param {function} arg.callback 参数`list`为返回消息列表信息
 	 */
 	Sqlite.getMsgList = function(arg) {
 		const sql = `
-			select a.*, c.name, c.account
+			select a.*, c.name, c.account, c.rowid as friend_id
 			from   t_msg a
 					join (select conversation_id, max(time) as last_time
 						  from   t_msg
@@ -269,6 +328,7 @@
 						on (from_id = ${arg.uid} and c.rowid = a.to_id) or (to_id = ${arg.uid} and c.rowid = a.from_id)
 			order  by time desc
 		`;
+		console.log(sql);
 		db.all(sql, (err, rows) => {
 			err && console.error(err);
 			if (!err && arg.callback) {
@@ -279,6 +339,7 @@
 					const lastTime = t < today ? row.time.substr(0, 10) : row.time.substr(row.time.length - 5, 5);
 					//`${t.getHours()}:${t.getMinutes()}`
 					return {
+						friendID: row.friend_id,
 						name: row.name,
 						account: row.account,
 						lastTime: lastTime,

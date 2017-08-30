@@ -31,6 +31,48 @@ router.use(function(req, res, next) {
 	}
 });
 
+router.post('/addMsg', (req, res) => {
+
+	Sqlite.addMsg(req.body);
+	res.send('');
+
+});
+
+
+router.get('/getConversation', (req, res) => {
+
+	Sqlite.getConversation({
+		uid: req.uid,
+		friendID: req.query.friendID,
+		callback: function(arg) {
+			(arg.error === 0) && res.send({ list: arg.list });
+		}
+	});
+
+});
+
+router.get('/getMsgList', (req, res) => {
+
+	Sqlite.getMsgList({
+		uid: req.uid,
+		callback: function(arg) {
+			(arg.error === 0) && res.send({ list: arg.list });
+		}
+	});
+
+});
+
+router.get('/getFriendList', (req, res) => {
+	
+	Sqlite.getFriendList({
+		uid: req.uid,
+		callback: function(arg) {
+			(arg.error === 0) && res.send({ list: arg.list });
+		}
+	});
+
+});
+
 //用户登录
 router.get('/login', (req, res) => {
 	const jwt = require('jsonwebtoken');
@@ -58,26 +100,6 @@ router.get('/login', (req, res) => {
 		} 
 	});
 
-});
-
-router.get('/getMsgList', (req, res) => {
-
-	Sqlite.getMsgList({
-		uid: req.uid,
-		callback: function(arg) {
-			(arg.error === 0) && res.send({ list: arg.list });
-		}
-	});
-});
-
-router.get('/getFriendList', (req, res) => {
-	
-	Sqlite.getFriendList({
-		uid: req.uid,
-		callback: function(arg) {
-			(arg.error === 0) && res.send({ list: arg.list });
-		}
-	});
 });
 
 router.post('/post_test', (req, res) => {
