@@ -262,7 +262,7 @@
 		const sql = `select b.*, a.rowid, a.name as groupName from 
 						(select rowid, * from t_friend_group where user_id = ${arg.uid}) a
 					left join 
-						(select c.*, d.friend_group_id 
+						(select c.*, d.friend_group_id, c.rowid as friendID
 						 from   t_user c, (select user2_id, friend_group_id 
 						 				   from   t_relation 
 						 				   where  user1_id = ${arg.uid}) d
@@ -280,6 +280,7 @@
 				rows.forEach(function(item) {
 					const index = Math.floor(Math.random() * 3);
 					const user = {
+						friendID: item.friendID,
 						name: item.name,
 						sex: item.sex,
 						account: item.account,

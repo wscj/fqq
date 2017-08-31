@@ -19,7 +19,7 @@ export default {
 			// this.$emit('avatarClick');
 		},
 		test () {
-			
+			this.fn.gotoConversation()
 		}
 	}
 }

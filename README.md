@@ -4,9 +4,16 @@
 
 #### 技术点
 
-* Vue.js vue-resource vuex vue-router
-* Node.js Express.js
-* Sqlite
+* 前端
+	* Vue.js
+	* vue-resource
+	* vuex
+	* vue-router
+* 后端
+	* Node.js
+	* Express.js
+* 数据库
+	* Sqlite
 
 ## Build Setup
 

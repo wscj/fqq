@@ -22,14 +22,7 @@ export default {
 	props: ['chatInfo'],
 	methods: {
 		click () {
-			this.$router.push({ 
-				path: '/show-panel/conversation',
-				query: { 
-					friendID: this.chatInfo.friendID, 
-					name: this.chatInfo.name,
-					account: this.chatInfo.account
-				}
-			});
+			this.fn.gotoConversation(this, this.chatInfo);
 		}
 	}
 }

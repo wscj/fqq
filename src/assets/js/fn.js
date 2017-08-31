@@ -12,6 +12,16 @@ export default {
 			 */
 			warn: function(msg) {
 				console.error(msg);
+			},
+			gotoConversation: function(_this, params) {
+				_this.$router.push({ 
+					path: '/show-panel/conversation',
+					query: { 
+						friendID: params.friendID, 
+						name: params.name,
+						account: params.account
+					}
+				});
 			}
 		}
 	}

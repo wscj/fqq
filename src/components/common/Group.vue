@@ -7,19 +7,14 @@
 		</div>
 		<ul :class="expandClass" name="list">
 			<li v-for="friend in groupInfo.friends">
-				<div class="avatar">
-					<img :src="'/static/img/' + friend.account + '.jpg'">
-				</div>
-				<div class="text">
-					<p>{{ friend.name }}</p>
-					<span>[{{ friend.state }}] {{ friend.signature }}</span>
-				</div>
+				<v-group-item :friendInfo="friend"></v-group-item>
 			</li>
 		</ul>
 	</div>
 </template>
 
 <script>
+import vGroupItem from './GroupItem';
 export default {
 	data () {
 		return {
@@ -30,7 +25,11 @@ export default {
 	methods: {
 		click: function(e) {
 			this.expandClass = this.expandClass ? '' : 'expand';
+			console.log(666);
 		}
+	},
+	components: {
+		vGroupItem
 	}
 }
 </script>
@@ -74,32 +73,10 @@ export default {
 		display: flex;
 		border-bottom: 1px solid #e6e6e6;
 	}
-	.avatar {
-		display: flex;
-		width: 1.36rem;
-		justify-content: center;
-		align-items: center;
-	}
-	.avatar > img {
-		width: .88rem;
-		height: .88rem;
-		border-radius: 50%;
-	}
-	.text {
-		flex: 1;
-	}
-	.text p {
-		margin-top: .16rem;
-	}
-	.text span {
-		color: #808080;
-		font-size: .26rem;
-	}
 	.expand[name=group] {
 		transform: rotate(90deg);
 	}
 	.expand[name=list] {
 		height: auto;
-		/*background: pink;*/
 	}
 </style>
