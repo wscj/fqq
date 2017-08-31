@@ -329,7 +329,6 @@
 						on (from_id = ${arg.uid} and c.rowid = a.to_id) or (to_id = ${arg.uid} and c.rowid = a.from_id)
 			order  by time desc
 		`;
-		console.log(sql);
 		db.all(sql, (err, rows) => {
 			err && console.error(err);
 			if (!err && arg.callback) {

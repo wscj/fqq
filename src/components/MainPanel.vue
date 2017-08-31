@@ -72,18 +72,11 @@ export default {
 		}
 	},
 	activated () {
-		if (this.$route.query.reset) {
+		//处理特殊情况：如果是退出登录后再登录，则这里的当前的left为-7.2rem，需设置为0
+		if (this.$route.name === 'main') {
 			this.$el.style.left = '0rem';
 		}
 	},
-	// created () {
-	// 	console.log('main');
-	// },
-	// computed: {
-	// 	show: function() {
-	// 		return this.$store.state.sidebar;
-	// 	}
-	// }
 }
 </script>
 

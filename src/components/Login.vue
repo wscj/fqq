@@ -63,7 +63,9 @@ export default {
 						if (resp.body.token) {
 							localStorage.token = resp.body.token;
 							localStorage.user = JSON.stringify(resp.body.user);
-							this.$router.replace({ path: this.$route.query.redirect || '/', query: { reset: 1 }});
+							const to = this.$route.query.redirect || '/';
+							const param = to === '/' ? { name: 'main'} : { path: to };
+							this.$router.replace(param);
 							this.$store.commit('setUser', resp.body.user);
 							console.log('登录成功');
 						}

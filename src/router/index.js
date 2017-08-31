@@ -22,6 +22,7 @@ const router = new Router({
         component: Login,
     }, {
 		path: '/',
+        name: 'main',
 		component: MainPanel,
         meta: { requiresAuth: true },
 		children:[{
