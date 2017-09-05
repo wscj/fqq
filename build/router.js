@@ -6,7 +6,7 @@ router.use(function(req, res, next) {
 
 	function unvalid(res) {
 		res.append('Verify', 'fail');
-		res.send('Verify fail!');
+		res.sendFile(path.join(__dirname, '../index.html'));
 	}
 
 	//登录的请求不需要token

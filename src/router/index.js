@@ -62,6 +62,7 @@ const router = new Router({
 });
 
 router.beforeEach((to, from, next) => {
+
     if (to.matched[0] && to.matched[0].meta.requiresAuth) {
         if (!localStorage.token) {
             next({

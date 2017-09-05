@@ -70,7 +70,6 @@ export default {
 		font-size: .3rem;
 		height: 1.2rem;
 		background-color: #fff;
-		display: flex;
 		border-bottom: 1px solid #e6e6e6;
 	}
 	.expand[name=group] {
