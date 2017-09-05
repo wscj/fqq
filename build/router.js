@@ -1,5 +1,6 @@
 const router = require('express').Router();
 const Sqlite = require('./sqlite');
+const path = require('path');
 
 //处理身份验证
 router.use(function(req, res, next) {
