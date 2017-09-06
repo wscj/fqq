@@ -12,10 +12,12 @@
 				<router-view></router-view>
 			</keep-alive>
 		</transition>
+		<v-loading v-show="this.$store.state.loading.show"></v-loading>
 	</div>
 </template>
 
 <script>
+import vLoading from './components/common/Loading';
 export default {
 	data () {
 		return {
@@ -45,6 +47,9 @@ export default {
 			}
 		},
 		afterLeave: function(el) {}
+	},
+	components: {
+		vLoading
 	}
 }
 </script>

@@ -34,7 +34,10 @@ const store = new Vuex.Store({
   state: {
     sidebar: '',
     user: {},
-    // alive: true,
+    loading: {
+      show: false,
+      text: '加载中...'
+    }
   },
   mutations: {
     showSidebar: state => state.sidebar = 'show',
@@ -45,9 +48,11 @@ const store = new Vuex.Store({
       } else {
         state.user[obj] = value;
       }
+    },
+    setLoading: (state, onShow, text) => {
+      state.loading.show = !!onShow;
+      state.loading.text = text || '加载中...';
     }
-    // destroy: state => state.alive = false,
-    // doNotDestroy: state => state.alive = true,
   }
 })
 

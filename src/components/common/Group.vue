@@ -25,7 +25,6 @@ export default {
 	methods: {
 		click: function(e) {
 			this.expandClass = this.expandClass ? '' : 'expand';
-			console.log(666);
 		}
 	},
 	components: {
@@ -34,43 +33,44 @@ export default {
 }
 </script>
 
-<style scoped>
+<style lang="scss" scoped>
+	@import '../../assets/sass/function';
 	.group {
 		display: flex;
 		background-color: #fff;
 		transition: height 180ms linear;
-	}
-	.group b {
-		width: .8rem;
-		height: .8rem;
-		background: url('../../assets/img/right.png') no-repeat;
-		background-size: .3rem;
-		background-position: center;
-		transition: 180ms linear;
-	}
-	.group span {
-		flex: 1;
-		font-size: .3rem;
-		color: #000;
-		height: .8rem;
-		line-height: .8rem;
-	}
-	.group i {
-		font-style: normal;
-		font-size: .26rem;
-		color: #999;
-		line-height: .8rem;
-		padding: 0 .4rem;
+		b {
+			width: px2rem(60px);
+			height: px2rem(60px);
+			background: url('../../assets/img/right.png') no-repeat;
+			background-size: px2rem(22px);
+			background-position: center;
+			transition: 180ms linear;
+		}
+		span {
+			flex: 1;
+			font-size: px2rem(22px);
+			color: #000;
+			height: px2rem(60px);
+			line-height: px2rem(60px);
+		}
+		i {
+			font-style: normal;
+			font-size: px2rem(20px);
+			color: #999;
+			line-height: px2rem(60px);
+			padding: 0 px2rem(30px);
+		}
 	}
 	ul {
 		height: 0;
 		overflow: hidden;
-	}
-	li {
-		font-size: .3rem;
-		height: 1.2rem;
-		background-color: #fff;
-		border-bottom: 1px solid #e6e6e6;
+		li {
+			font-size: px2rem(22px);
+			height: px2rem(90px);
+			background-color: #fff;
+			border-bottom: 1px solid #e6e6e6;
+		}
 	}
 	.expand[name=group] {
 		transform: rotate(90deg);

@@ -21,26 +21,27 @@ export default {
 }
 </script>
 
-<style scoped>
+<style lang="scss" scoped>
+	@import '../../assets/sass/function';
 	.goto-item {
 		display: flex;
-		height: .8rem;
+		height: px2rem(60px);
 		background-color: #fff;
 		border-bottom: 1px solid #e6e6e6;
 	}
 	p {
 		flex: 1;
-		font-size: .32rem;
+		font-size: px2rem(24px);
 		color: #000;
-		line-height: .8rem;
-		margin-left: .4rem;
+		line-height: px2rem(60px);
+		margin-left: px2rem(30px);
 	}
 	b {
 		display: block;
 		height: 100%;
-		width: .68rem;
+		width: px2rem(51px);
 		background: url('../../assets/img/right.png') no-repeat;
 		background-position: center;
-		background-size: .28rem;
+		background-size: px2rem(21px);
 	}
 </style>

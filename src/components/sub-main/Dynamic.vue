@@ -1,7 +1,6 @@
 <template>
-	<div class="dynamic" @click="click">
-		Dynamic
-		<!-- <router-view></router-view> -->
+	<div class="dynamic">
+		<input type="button" value="Loading"  @click="click">
 	</div>
 </template>
 
@@ -15,16 +14,27 @@ export default {
 	},
 	methods: {
 		click () {
-			
+			this.$store.commit('setLoading', true);
+			setTimeout(() => {
+				this.$store.commit('setLoading', false);
+			}, 2000);
 		}
 	}
 }
 </script>
 
-<style scoped>
+<style lang="scss" scoped>
+	@import '../../assets/sass/function';
 	.dynamic {
-		font-size: .6rem;
+		font-size: px2rem(45px);
 		text-align: center;
-		margin-top: .2rem;
+		margin-top: px2rem(15px);
+	}
+	input {
+		width: px2rem(200px);
+		height: px2rem(60px);
+		font-size: px2rem(26px);
+		border-radius: px2rem(8px);
+		border: none;
 	}
 </style>

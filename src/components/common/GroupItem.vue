@@ -21,33 +21,34 @@ export default {
 }
 </script>
 
-<style scoped>
+<style lang="scss" scoped>
+	@import '../../assets/sass/function';
 	.group-item {
-		font-size: .3rem;
-		height: 1.2rem;
+		font-size: px2rem(22px);
+		height: px2rem(90px);
 		background-color: #fff;
 		display: flex;
 		border-bottom: 1px solid #e6e6e6;
-	}
-	.avatar {
-		display: flex;
-		width: 1.36rem;
-		justify-content: center;
-		align-items: center;
-	}
-	.avatar > img {
-		width: .88rem;
-		height: .88rem;
-		border-radius: 50%;
-	}
-	.text {
-		flex: 1;
-	}
-	.text p {
-		margin-top: .16rem;
-	}
-	.text span {
-		color: #808080;
-		font-size: .26rem;
+		.avatar {
+			display: flex;
+			width: px2rem(102px);
+			justify-content: center;
+			align-items: center;
+			> img {
+				width: px2rem(66px);
+				height: px2rem(66px);
+				border-radius: 50%;
+			}
+		}
+		.text {
+			flex: 1;
+			p {
+				margin-top: px2rem(12px);
+			}
+			span {
+				color: #808080;
+				font-size: px2rem(19px);
+			}
+		}
 	}
 </style>

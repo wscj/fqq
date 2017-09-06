@@ -80,7 +80,7 @@ export default {
 }
 </script>
 
-<style scoped>
+<style lang="scss" scoped>
 	.panel {
 		position: fixed;
 		width: 100%;
