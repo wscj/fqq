@@ -14,9 +14,9 @@ export default {
 	},
 	methods: {
 		click () {
-			this.$store.commit('setLoading', true);
+			this.$store.commit('setLoading', { onShow: true });
 			setTimeout(() => {
-				this.$store.commit('setLoading', false);
+				this.$store.commit('setLoading', { onShow: false });
 			}, 2000);
 		}
 	}

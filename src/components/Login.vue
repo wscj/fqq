@@ -64,10 +64,14 @@ export default {
 							localStorage.token = resp.body.token;
 							localStorage.user = JSON.stringify(resp.body.user);
 							const to = this.$route.query.redirect || '/';
-							const param = to === '/' ? { name: 'main'} : { path: to };
-							this.$router.replace(param);
 							this.$store.commit('setUser', resp.body.user);
-							console.log('登录成功');
+							this.$store.commit('setLoading', { onShow: true, text: '故意延迟，等一下咯！！'});
+							setTimeout(() => {
+								this.$store.commit('setLoading', { onShow: false });
+								this.$router.replace({ path: to });
+								this.pwd = ''; //密码要清空
+								console.log('登录成功');
+							}, 2300);
 						}
 						else {
 							this.fn.warn(resp.body.error);

@@ -14,6 +14,8 @@ import Conversation from '@/components/sub-show/Conversation'
 
 import Temp from '@/components/Temp'
 
+import store from '../store'
+
 Vue.use(Router)
 
 const router = new Router({
@@ -74,6 +76,10 @@ router.beforeEach((to, from, next) => {
         }
         else {
             next();
+            if (!Object.keys(store.state.user).length) {
+                var user = JSON.parse(localStorage.user);
+                store.commit('setUser', user);
+            }
         }
     }
     else {

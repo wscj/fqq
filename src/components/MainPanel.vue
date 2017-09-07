@@ -73,7 +73,7 @@ export default {
 	},
 	activated () {
 		//处理特殊情况：如果是退出登录后再登录，则这里的当前的left为-7.2rem，需设置为0
-		if (this.$route.name === 'main') {
+		if (this.$route.matched[0].name === 'main') {
 			this.$el.style.left = '0rem';
 		}
 	},
@@ -81,52 +81,52 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+	@import '../assets/sass/function';
 	.panel {
 		position: fixed;
 		width: 100%;
 		height: 100%;
-		/*transition: left 250ms;*/
-	}
-	.info-panel {
-		position: absolute;
-		height: 100%;
-		width: 5.6rem;
-		left: -5.6rem;
-		z-index: 3;
-		transition: left 250ms;
-		background-color: #fff;
-	}
-	.info-panel[name=show] {
-		left: 0;
-	}
-	.main-panel {
-		position: absolute;
-		left: 0;
-		height: 100%;
-		width: 100%;
-		transition: left 250ms;
-		display: flex;
-		flex-direction: column;
-	}
-	.main-div {
-		flex: 1;
-		overflow-x: hidden;
-		overflow-y: auto;
-	}
-	.main-panel[name=show] {
-		left: 5.6rem !important;
-	}
-	.shade {
-		opacity: 0;
-		transition: opacity 250ms;
-	}
-	.shade[name=show] {
-		position: fixed;
-		width: 100%;
-		height: 100%;
-		background: rgba(0, 0, 0, .36);
-		opacity: 1;
-		z-index: 2;
+		.info-panel {
+			position: absolute;
+			height: 100%;
+			width: 5.6rem;
+			left: -5.6rem;
+			z-index: 3;
+			transition: left 250ms;
+			background-color: #fff;
+		}
+		.info-panel[name=show] {
+			left: 0;
+		}
+		.main-panel {
+			position: absolute;
+			left: 0;
+			height: 100%;
+			width: 100%;
+			transition: left 250ms;
+			display: flex;
+			flex-direction: column;
+		}
+		.main-div {
+			flex: 1;
+			overflow-x: hidden;
+			overflow-y: auto;
+		}
+		.main-panel[name=show] {
+			left: 5.6rem !important;
+		}
+		.shade {
+			opacity: 0;
+			transition: opacity 250ms;
+		}
+		.shade[name=show] {
+			position: fixed;
+			width: 100%;
+			height: 100%;
+			background: rgba(0, 0, 0, .36);
+			opacity: 1;
+			z-index: 2;
+		}
 	}
 	.slide-right-enter-active,
 	.slide-left-enter-active {

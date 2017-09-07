@@ -11,7 +11,7 @@ router.use(function(req, res, next) {
 	}
 
 	//登录的请求不需要token
-	if (req.url.substr(0, 7) !== '/login?') {
+	if (req.url.substr(0, 6) !== '/login') {
 		const token = req.headers['authorization'];
 		if (!token) {
 			unvalid(res);
@@ -52,9 +52,9 @@ router.get('/getConversation', (req, res) => {
 
 });
 
-router.get('/getMsgList', (req, res) => {
-
-	Sqlite.getMsgList({
+router.get('/getFriendList', (req, res) => {
+	
+	Sqlite.getFriendList({
 		uid: req.uid,
 		callback: function(arg) {
 			(arg.error === 0) && res.send({ list: arg.list });
@@ -63,9 +63,9 @@ router.get('/getMsgList', (req, res) => {
 
 });
 
-router.get('/getFriendList', (req, res) => {
-	
-	Sqlite.getFriendList({
+router.get('/getMsgList', (req, res) => {
+
+	Sqlite.getMsgList({
 		uid: req.uid,
 		callback: function(arg) {
 			(arg.error === 0) && res.send({ list: arg.list });

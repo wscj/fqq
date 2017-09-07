@@ -29,7 +29,7 @@ export default {
 		display: flex;
 		align-items: center;
 		.container {
-			height: px2rem(200px);
+			height: px2rem(150px);
 			width: 100%;
 			p {
 				color: #eee;
@@ -49,9 +49,9 @@ export default {
 		flex-shrink: 0;
 		flex-basis: 25%;
 		max-width: 25%;
-		height: 120px;
+		height: 100px;
 		align-items: center;
-		justify-content: center;
+		// justify-content: center;
 		.ball-scale-multiple {
 			position: relative;
 			transform: translateY(-30px);
