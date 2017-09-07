@@ -71,7 +71,7 @@ export default {
 								this.$router.replace({ path: to });
 								this.pwd = ''; //密码要清空
 								console.log('登录成功');
-							}, 2300);
+							}, 1200);
 						}
 						else {
 							this.fn.warn(resp.body.error);

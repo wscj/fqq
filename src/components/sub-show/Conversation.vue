@@ -91,7 +91,7 @@ export default {
 					setTimeout(() => {
 						content.scrollTop = content.scrollHeight - content.offsetHeight;
 					}, 60);
-				}, 800);
+				}, 1000);
 
 				this.$http.post('/addMsg', {
 					fromID: JSON.parse(localStorage.user).rowid,
