@@ -72,7 +72,7 @@
 		 * |user1_id|Integer|外键，对应t_user表的rowid，表示与user2是好友|
 		 * |user2_id|Integer|外键，对应t_user表的rowid，表示与user1是好友|
 		 * |remark|NVarchar(30)|user1对user2的备注名称|
-		 * |friend_group_id|Integer|外键，对应friend_group的rowid，表示user2在user1的哪个好友分组|
+		 * |friend_group_id|Integer|外键，对应t_friend_group的rowid，表示user2在user1的哪个好友分组|
 		 */
 		sqls.push(`
 			create table t_relation (
@@ -156,17 +156,27 @@
 		`);
 		sqls.push(`
 			insert into t_friend_group (user_id, name)
-			select 6, '特别关注'
+			select 1, '我的好友'
+			union select 2, '我的好友'
+			union select 3, '我的好友'
+			union select 4, '我的好友'
+			union select 5, '我的好友'
+			union select 6, '特别关注'
 			union select 6, '我的好友'
 			union select 6, '同学'
 		`);
 		sqls.push(`
 			insert into t_relation (user1_id, user2_id, remark, friend_group_id)
-			select 6, 1, '备注为逗逼', 1
-			union select 6, 2, '', 1
-			union select 6, 3, '', 1
-			union select 6, 4, '', 2
-			union select 6, 5, '', 2
+			select 6, 1, '备注为逗逼', 6
+			union select 6, 2, '', 6
+			union select 6, 3, '', 7
+			union select 6, 4, '', 8
+			union select 6, 5, '', 7
+			union select 1, 6, '', 1
+			union select 2, 6, '', 2
+			union select 3, 6, '', 3
+			union select 4, 6, '', 4
+			union select 5, 6, '', 5
 		`);
 		sqls.push(`
 			insert into t_msg (from_id, to_id, conversation_id, content, time)
@@ -332,7 +342,6 @@
 		db.all(sql, (err, rows) => {
 			err && console.error(err);
 			if (!err && arg.callback) {
-				console.log(666, rows);
 				const list = rows.map(function(row) {
 					const now = new Date();
 					const today = new Date(`${now.getFullYear()}-${now.getMonth() + 1}-${now.getDate()}`);
