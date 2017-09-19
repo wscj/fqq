@@ -34,7 +34,7 @@ export default {
 <style lang="scss" scoped>
 	@import '../../assets/sass/function';
 	.footer {
-		height: px2rem(91.65px);
+		height: px2rem(183.3px);
 		width: 100%;
 		border-top: 1px solid #e6e6e6;
 		display: flex;
@@ -46,14 +46,14 @@ export default {
 		}
 		b {
 			display: inline-block;
-			width: px2rem(45px);
-			height: px2rem(45px);
-			margin-top: px2rem(9px);
-			background-size: px2rem(45px);
+			width: px2rem(90px);
+			height: px2rem(90px);
+			margin-top: px2rem(18px);
+			background-size: px2rem(90px);
 		}
 		span {
 			display: block;
-			font-size: px2rem(16.5px);
+			font-size: px2rem(33px);
 			color: #a0a0a0;
 		}
 	}
@@ -68,15 +68,15 @@ export default {
 	}
 	.router-link-exact-active .msg {
 		background: url('../../assets/img/msg_active.png') no-repeat;
-		background-size: px2rem(45px);
+		background-size: px2rem(90px);
 	}
 	.router-link-exact-active .contacts {
 		background: url('../../assets/img/user_active.png') no-repeat;
-		background-size: px2rem(45px);
+		background-size: px2rem(90px);
 	}
 	.router-link-exact-active .dynamic {
 		background: url('../../assets/img/qzone_active.png') no-repeat;
-		background-size: px2rem(45px);
+		background-size: px2rem(90px);
 	}
 	.router-link-exact-active span {
 		color: #47bafe;

@@ -29,57 +29,58 @@ export default {
 }
 </script>
 
-<style scoped>
+<style lang="scss" scoped>
+	@import '../../assets/sass/function';
 	.search-page {
 		background: #fff;
 	}
 	.search-bar {
 		display: flex;
-		padding: .14rem 0;
+		padding: px2rem(21px) 0;
 	}
 	.input-c {
 		flex: 1;
 		position: relative;
-		padding-left: .2rem;
+		padding-left: px2rem(30px);
 	}
 	.input-c input {
 		width: calc(100% - .4rem);
 		height: 100%;
 		background: #f3f3f3;
 		border: none;
-		border-radius: .08rem;
-		font-size: .3rem;
-		text-indent: .56rem;
-		padding: 0 .2rem;
+		border-radius: px2rem(12px);
+		font-size: px2rem(45px);
+		text-indent: px2rem(84px);
+		padding: 0 px2rem(30px);
 	}
 	.input-c input::placeholder {
 		color: #a6a6a6;
 	}
 	.input-c b {
-		width: .66rem;
-		height: .66rem;
-		margin-right: .08rem;
+		width: px2rem(99px);
+		height: px2rem(99px);
+		margin-right: px2rem(12px);
 		background: url('../../assets/img/search.png') no-repeat;
-		background-size: .36rem;
+		background-size: px2rem(54px);
 		background-position: center;
 		position: absolute;
 		top: 0;
-		left: .28rem;
+		left: px2rem(42px);
 	}
 	.btn-cancel {
-		width: 1.4rem;
-		height: .66rem;
-		font-size: .3rem;
+		width: px2rem(210px);
+		height: px2rem(99px);
+		font-size: px2rem(45px);
 		background: #fff;
 		border: none;
 		color: #00a5e0;
 	}
 	h4 {
 		background: #fff;
-		font-size: .28rem;
+		font-size: px2rem(42px);
 		color: #848484;
-		margin-left: .2rem;
-		padding: .1rem 0rem;
+		margin-left: px2rem(30px);
+		padding: px2rem(15px) px2rem(0px);
 		border-bottom: 1px solid #ddd;
 	}
 	.classify {
@@ -90,7 +91,7 @@ export default {
 		flex: 1;
 		text-align: center;
 		font-size: 0;
-		margin: .2rem 0;
+		margin: px2rem(30px) 0;
 		border-left: 1px solid #ddd;
 		display: flex;
 		align-items: center;
@@ -100,15 +101,15 @@ export default {
 		border: none;
 	}
 	.classify > div > span {
-		font-size: .28rem;
-		margin-left: .04rem;
+		font-size: px2rem(42px);
+		margin-left: px2rem(6px);
 	}
 	.classify > div > b {
 		display: inline-block;
-		width: .4rem;
-		height: .4rem;
-		font-size: .28rem;
-		background-size: .4rem;
+		width: px2rem(60px);
+		height: px2rem(60px);
+		font-size: px2rem(42px);
+		background-size: px2rem(60px);
 	}
 	.dynamic > b {
 		background: url('../../assets/img/qzone2.png') no-repeat;

@@ -24,30 +24,30 @@ export default {
 <style lang="scss" scoped>
 	@import '../../assets/sass/function';
 	.group-item {
-		font-size: px2rem(22px);
-		height: px2rem(90px);
+		font-size: px2rem(44px);
+		height: px2rem(180px);
 		background-color: #fff;
 		display: flex;
 		border-bottom: 1px solid #e6e6e6;
 		.avatar {
 			display: flex;
-			width: px2rem(102px);
+			width: px2rem(204px);
 			justify-content: center;
 			align-items: center;
 			> img {
-				width: px2rem(66px);
-				height: px2rem(66px);
+				width: px2rem(132px);
+				height: px2rem(132px);
 				border-radius: 50%;
 			}
 		}
 		.text {
 			flex: 1;
 			p {
-				margin-top: px2rem(12px);
+				margin-top: px2rem(24px);
 			}
 			span {
 				color: #808080;
-				font-size: px2rem(19px);
+				font-size: px2rem(38px);
 			}
 		}
 	}

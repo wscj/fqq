@@ -91,7 +91,8 @@ export default {
 }
 </script>
 
-<style scoped>
+<style lang="scss" scoped>
+	@import '../assets/sass/function';
 	.login {
 		position: fixed;
 		top: 0;
@@ -104,22 +105,22 @@ export default {
 		display: flex;
 		justify-content: center;
 		align-items: center;
-		height: 5rem;
+		height: px2rem(750px);
 		/*background-color: pink;*/
 	}
 	.avatar img {
-		width: 2.6rem;
-		height: 2.6rem;
+		width: px2rem(390px);
+		height: px2rem(390px);
 		border-radius: 50%;
 	}
 	.info {
-		/*margin: 1.8rem 0 0 0;*/
+		/*margin: px2rem(270px) 0 0 0;*/
 	}
 	.account,
 	.password {
 		position: relative;
-		height: .8rem;
-		margin: .2rem .4rem;
+		height: px2rem(120px);
+		margin: px2rem(30px) px2rem(60px);
 	}
 	.account > b,
 	.password > b {
@@ -127,18 +128,18 @@ export default {
 		top: 0;
 		left: 0;
 		display: block;
-		width: .8rem;
-		height: .8rem;
+		width: px2rem(120px);
+		height: px2rem(120px);
 		background-position: center;
 		z-index: 2;
 	}
 	.user {
 		background: url('../assets/img/user2.png') no-repeat;
-		background-size: .6rem .6rem;
+		background-size: px2rem(90px) px2rem(90px);
 	}
 	.pwd {
 		background: url('../assets/img/password.png') no-repeat;
-		background-size: .52rem .52rem;
+		background-size: px2rem(78px) px2rem(78px);
 	}
 	.account input,
 	.password input {
@@ -149,24 +150,23 @@ export default {
 		height: 100%;
 		border: none;
 		border-bottom: 1px solid #ccc;
-		text-indent: 1rem;
-		font-size: .36rem;
+		text-indent: px2rem(150px);
+		font-size: px2rem(54px);
 	}
 	.btn {
-		margin: 1rem .4rem;
+		margin: px2rem(150px) px2rem(60px);
 	}
 	.btn input {
 		width: 100%;
-		height: .8rem;
-		border-radius: .1rem;
+		height: px2rem(120px);
+		border-radius: px2rem(15px);
 		border: none;
-		font-size: .34rem;
+		font-size: px2rem(51px);
 		background-color: #4b93fe;
 		color: #fff;
 	}
 	.account input::placeholder,
 	.password input::placeholder {
 		color: #ccc;
-		/*font-style: italic;*/
 	}
 </style>

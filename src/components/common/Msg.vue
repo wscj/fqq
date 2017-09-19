@@ -35,17 +35,18 @@ export default {
 }
 </script>
 
-<style scoped>
+<style lang="scss" scoped>
+	@import '../../assets/sass/function';
 	.msg {
 		display: flex;
-		margin: .4rem 0;
+		margin: px2rem(60px) 0;
 	}
 	.avatar {
-		width: 1.3rem;
+		width: px2rem(195px);
 		background-color: #f0f2f8;
 	}
 	.avatar img {
-		width: .9rem;
+		width: px2rem(135px);
 		border-radius: 50%;
 		margin: 0 auto;
 		display: block;
@@ -55,11 +56,11 @@ export default {
 	}
 	.content > span {
 		background-color: #fff;
-		font-size: .28rem;
+		font-size: px2rem(42px);
 		color: #000;
 		display: inline-block;
-		max-width: 4rem;
-		padding: .236rem .26rem;
-		border-radius: .24rem;
+		max-width: px2rem(600px);
+		padding: px2rem(35.4px) px2rem(39px);
+		border-radius: px2rem(36px);
 	}
 </style>

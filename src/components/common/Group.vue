@@ -40,34 +40,34 @@ export default {
 		background-color: #fff;
 		transition: height 180ms linear;
 		b {
-			width: px2rem(60px);
-			height: px2rem(60px);
+			width: px2rem(120px);
+			height: px2rem(120px);
 			background: url('../../assets/img/right.png') no-repeat;
-			background-size: px2rem(22px);
+			background-size: px2rem(44px);
 			background-position: center;
 			transition: 180ms linear;
 		}
 		span {
 			flex: 1;
-			font-size: px2rem(22px);
+			font-size: px2rem(44px);
 			color: #000;
-			height: px2rem(60px);
-			line-height: px2rem(60px);
+			height: px2rem(120px);
+			line-height: px2rem(120px);
 		}
 		i {
 			font-style: normal;
-			font-size: px2rem(20px);
+			font-size: px2rem(40px);
 			color: #999;
-			line-height: px2rem(60px);
-			padding: 0 px2rem(30px);
+			line-height: px2rem(120px);
+			padding: 0 px2rem(60px);
 		}
 	}
 	ul {
 		height: 0;
 		overflow: hidden;
 		li {
-			font-size: px2rem(22px);
-			height: px2rem(90px);
+			font-size: px2rem(44px);
+			height: px2rem(180px);
 			background-color: #fff;
 			border-bottom: 1px solid #e6e6e6;
 		}

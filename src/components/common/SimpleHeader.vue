@@ -19,32 +19,33 @@ export default {
 }
 </script>
 
-<style scoped>
+<style lang="scss" scoped>
+	@import '../../assets/sass/function';
 	.header {
 		position: relative;
 		width: 100%;
-		height: 1rem;
+		height: px2rem(150px);
 		background: -webkit-linear-gradient(left top, #4f8cfe , #39b9fe);
-		line-height: 1rem;
+		line-height: px2rem(150px);
 		color: #fff;
-		font-size: .32rem;
+		font-size: px2rem(48px);
 	}
 	.left {
 		position: absolute;
 		top: 0;
 		left: 0;
-		width: 1.5rem;
+		width: px2rem(225px);
 		height: 100%;
 		z-index: 2;
 	}
 	.left > span:before {
 		content: '';
 		display: block;
-		width: .6rem;
-		height: 1rem;
+		width: px2rem(90px);
+		height: px2rem(150px);
 		float: left;
 		background: url('../../assets/img/back.png') no-repeat;
-		background-size: .5rem;
+		background-size: px2rem(75px);
 		background-position: right center;
 	}
 	.center {
@@ -55,13 +56,13 @@ export default {
 		height: 100%;
 		z-index: 1;
 		text-align: center;
-		font-size: .36rem;
+		font-size: px2rem(54px);
 	}
 	.right {
 		position: absolute;
 		top: 0;
 		right: 0;
-		width: 2rem;
+		width: px2rem(300px);
 		height: 100%;
 		z-index: 2;
 	}

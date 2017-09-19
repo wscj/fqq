@@ -14,7 +14,7 @@ export default {
 	.show-panel {
 		position: fixed;
 		top: 0;
-		left: 7.2rem;
+		left: px2rem(1080px);
 		width: 100%;
 		height: 100%;
 		z-index: 10;

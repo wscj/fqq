@@ -39,9 +39,10 @@ export default {
 }
 </script>
 
-<style scoped>
+<style lang="scss" scoped>
+	@import '../../assets/sass/function';
 	.items {
-		margin-top: .3rem;
+		margin-top: px2rem(45px);
 		border-top: 1px solid #e6e6e6;
 	}
 </style>

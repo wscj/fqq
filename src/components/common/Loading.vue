@@ -29,7 +29,7 @@ export default {
 		display: flex;
 		align-items: center;
 		.container {
-			height: px2rem(150px);
+			height: px2rem(300px);
 			width: 100%;
 			p {
 				color: #eee;

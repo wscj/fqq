@@ -89,8 +89,8 @@ export default {
 		.info-panel {
 			position: absolute;
 			height: 100%;
-			width: 5.6rem;
-			left: -5.6rem;
+			width:px2rem(840px);
+			left:px2rem(-840px);
 			z-index: 3;
 			transition: left 250ms;
 			background-color: #fff;
@@ -113,7 +113,7 @@ export default {
 			overflow-y: auto;
 		}
 		.main-panel[name=show] {
-			left: 5.6rem !important;
+			left:px2rem(840px) !important;
 		}
 		.shade {
 			opacity: 0;
@@ -133,11 +133,11 @@ export default {
 		transition: all .2s;
 	}
 	.slide-left-enter {
-		transform: translateX(-7.2rem);
+		transform: translateXpx2rem(-1080px));
 		opacity: 0;
 	}
 	.slide-right-enter {
-		transform: translateX(7.2rem);
+		transform: translateXpx2rem(1080px));
 		opacity: 0;
 	}
 </style>

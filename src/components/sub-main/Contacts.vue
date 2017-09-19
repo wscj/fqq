@@ -36,15 +36,16 @@ export default {
 }
 </script>
 
-<style scoped>
+<style lang="scss" scoped>
+	@import '../../assets/sass/function';
 	.contacts {
-		font-size: 1rem;
+		font-size: px2rem(150px);
 	}
 	hr {
 		border: none;
 		border-top: 1px solid #e6e6e6;
 	}
 	.blank {
-		height: .32rem;
+		height: px2rem(48px);
 	}
 </style>

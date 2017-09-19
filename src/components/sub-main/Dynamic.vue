@@ -26,15 +26,15 @@ export default {
 <style lang="scss" scoped>
 	@import '../../assets/sass/function';
 	.dynamic {
-		font-size: px2rem(45px);
+		font-size: px2rem(90px);
 		text-align: center;
-		margin-top: px2rem(15px);
+		margin-top: px2rem(30px);
 	}
 	input {
-		width: px2rem(200px);
-		height: px2rem(60px);
-		font-size: px2rem(26px);
-		border-radius: px2rem(8px);
+		width: px2rem(400px);
+		height: px2rem(120px);
+		font-size: px2rem(52px);
+		border-radius: px2rem(16px);
 		border: none;
 	}
 </style>

@@ -28,23 +28,24 @@ export default {
 }
 </script>
 
-<style scoped>
+<style lang="scss" scoped>
+	@import '../../assets/sass/function';
 	.msg-item {
 		display: flex;
-		height: 1.4rem;
+		height: px2rem(210px);
 		background-color: #fff;
 		border-bottom: 1px solid #e6e6e6;
 		text-align: left;
 	}
 	.avatar {
 		display: flex;
-		width: 1.6rem;
+		width: px2rem(240px);
 		justify-content: center;
 		align-items: center;
 	}
 	.avatar > img {
-		width: 1rem;
-		height: 1rem;
+		width: px2rem(150px);
+		height: px2rem(150px);
 		border-radius: 50%;
 	}
 	.text {
@@ -55,29 +56,29 @@ export default {
 		display: flex;
 	}
 	.text p {
-		margin-top: .12rem;
-		font-size: .36rem;
+		margin-top: px2rem(18px);
+		font-size: px2rem(54px);
 		color: #000;
 		flex: 1;
 		text-overflow: ellipsis;
-		width: .1rem;
+		width: px2rem(15px);
 		overflow: hidden;
 		white-space: nowrap;
 	}
 	.text span {
 		display: block;
-		margin-top: .1rem;
+		margin-top: px2rem(15px);
 		color: #808080;
-		font-size: .26rem;
+		font-size: px2rem(39px);
 		text-overflow: ellipsis;
-		width: 5rem;
+		width: px2rem(750px);
 		overflow: hidden;
 		white-space: nowrap;
 	}
 	.text i {
-		font-size: .26rem;
+		font-size: px2rem(39px);
 		color: #999;
-		height: .5rem;
-		padding: .22rem .26rem 0 0;
+		height: px2rem(75px);
+		padding: px2rem(33px) px2rem(39px) 0 0;
 	}
 </style>

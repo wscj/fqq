@@ -123,7 +123,8 @@ export default {
 }
 </script>
 
-<style scoped>
+<style lang="scss" scoped>
+	@import '../../assets/sass/function';
 	.conversation {
 		display: flex;
 		flex-direction: column;
@@ -135,38 +136,38 @@ export default {
 		overflow-y: auto;
 	}
 	.footer {
-		height: 1.5rem;
+		height: px2rem(225px);
 	}
 	.input {
-		height: .66rem;
+		height: px2rem(99px);
 		display: flex;
-		margin-bottom: .04rem;
+		margin-bottom: px2rem(6px);
 	}
 	.text {
 		flex: 1;
 		border: none;
-		margin: 0 .1rem 0 .12rem;
-		border-radius: .06rem;
-		padding: .2rem;
+		margin: 0 px2rem(15px) 0 px2rem(18px);
+		border-radius: px2rem(9px);
+		padding: px2rem(30px);
 	}
 	.button {
-		width: 1rem;
-		margin-right: .12rem;
+		width: px2rem(150px);
+		margin-right: px2rem(18px);
 		border: none;
-		border-radius: .12rem;
+		border-radius: px2rem(18px);
 		color: #f1f2f3;
 		background-color: #dddee2;
-		font-size: .28rem;
+		font-size: px2rem(42px);
 	}
 	.toolbar {
-		height: .8rem;
+		height: px2rem(120px);
 		display: flex;
 	}
 	.toolbar > b {
 		flex: 1;
 		background-repeat: no-repeat;
 		background-position: center;
-		background-size: .5rem;
+		background-size: px2rem(75px);
 	}
 	.toolbar > b[name=record] {
 		background-image: url('../../assets/img/record.png');
@@ -179,18 +180,18 @@ export default {
 	}
 	.toolbar > b[name=red_package] {
 		background-image: url('../../assets/img/red_package.png');
-		background-size: .4rem;
+		background-size: px2rem(60px);
 	}
 	.toolbar > b[name=gif] {
 		background-image: url('../../assets/img/gif.png');
-		background-size: .42rem;
+		background-size: px2rem(63px);
 	}
 	.toolbar > b[name=smile] {
 		background-image: url('../../assets/img/smile.png');
-		background-size: .48rem;
+		background-size: px2rem(72px);
 	}
 	.toolbar > b[name=add2] {
 		background-image: url('../../assets/img/add2.png');
-		background-size: .44rem;
+		background-size: px2rem(66px);
 	}
 </style>

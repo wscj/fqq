@@ -44,51 +44,52 @@ export default {
 }
 </script>
 
-<style scoped>
+<style lang="scss" scoped>
+	@import '../../assets/sass/function';
 	.setting-panel {
 		display: flex;
 		flex-direction: column;
 		height: 100%;
 	}
 	.top {
-		height: 3.8rem;
+		height: px2rem(570px);
 		background: url('/static/img/bg1.jpg') no-repeat;
 		background-size: 100% 100%;
 	}
 	.qr-code {
-		height: 1.6rem;
+		height: px2rem(240px);
 		position: relative;
 	}
 	.qr-code img {
-		width: .6rem;
+		width: px2rem(90px);
 		position: absolute;
-		top: .46rem;
-		right: .3rem;
+		top: px2rem(69px);
+		right: px2rem(45px);
 	}
 	.top-center {
 		display: flex;
-		padding-left: .36rem;
+		padding-left: px2rem(54px);
 	}
 	.top-center img {
-		width: .8rem;
-		height: .8rem;
+		width: px2rem(120px);
+		height: px2rem(120px);
 		border-radius: 50%;
 		border: 3px solid #fff;
 	}
 	.top-center span {
 		color: #fff;
-		font-size: .6rem;
-		padding-left: .3rem;
+		font-size: px2rem(90px);
+		padding-left: px2rem(45px);
 	}
 	.top-bottom {
-		padding: .12rem 0 0 .36rem;
+		padding: px2rem(18px) 0 0 px2rem(54px);
 	}
 	.top-bottom img {
-		width: .34rem;
+		width: px2rem(51px);
 	}
 	.top-bottom p {
 		color: #fff;
-		font-size: .28rem;
+		font-size: px2rem(42px);
 	}
 	.center {
 		flex: 1;
@@ -97,13 +98,13 @@ export default {
 	.temperature {
 		display: block;
 		text-align: right;
-		font-size: .8rem;
+		font-size: px2rem(120px);
 		color: #12b7f5;
-		padding: 0 .2rem;				
-		margin-bottom: .1rem;
+		padding: 0 px2rem(30px);				
+		margin-bottom: px2rem(15px);
 	}
 	.bottom {
-		height: 2.1rem;
+		height: px2rem(315px);
 		display: flex;
 		flex-direction: column;
 	}
@@ -114,7 +115,7 @@ export default {
 	.toolbar > div {
 		flex: 1;
 		text-align: center;
-		font-size: .32rem;
+		font-size: px2rem(48px);
 		color: #232323;
 	}
 	.toolbar > div {
@@ -123,21 +124,21 @@ export default {
 	}
 	.toolbar > div > b {
 		display: block;
-		width: .47rem;
-		height: .47rem;
+		width: px2rem(70px);
+		height: px2rem(70px);
 		float: left;
-		background-size: .46rem;
+		background-size: px2rem(69px);
 	}
 	.toolbar > div > span {
 		display: block;
 		float: left;
-		margin-left: .1rem
+		margin-left: px2rem(15px);
 	}
 	.setting b {
 		background: url('/static/img/setting.png') no-repeat;
 	}
 	.moon b {
 		background: url('/static/img/moon.png') no-repeat;
-		background-size: .42rem !important;
+		background-size: px2rem(63px) !important;
 	}
 </style>

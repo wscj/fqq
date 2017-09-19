@@ -36,9 +36,10 @@ export default {
 }
 </script>
 
-<style scoped>
+<style lang="scss" scoped>
+	@import '../../assets/sass/function';
 	.nav {
-		height: .8rem;
+		height: px2rem(120px);
 		background-color: #fff;
 		overflow-x: auto;
 		overflow-y: hidden;
@@ -47,11 +48,11 @@ export default {
 	}
 	.item {
 		display: inline-block;
-		padding: 0 .38rem;
-		font-size: .28rem;
-		line-height: .8rem;
+		padding: 0 px2rem(57px);
+		font-size: px2rem(42px);
+		line-height: px2rem(120px);
 		text-align: center;
-		height: .8rem;
+		height: px2rem(120px);
 		position: relative;
 	}
 	a {
@@ -67,9 +68,9 @@ export default {
 		color: #12b7f5;
 	}
 	.router-link-exact-active  b {
-		margin-top: -.08rem;
+		margin-top: px2rem(-12px);
 		display: block;
-		height: .08rem;
+		height: px2rem(12px);
 		background: #12b7f5;
 	}
 	.nav::-webkit-scrollbar {
