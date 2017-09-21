@@ -24,18 +24,28 @@ export default {
 		},
 		uploadChange (event) {
 			let file = event.target.files[0];
-			if (file) {
-				const formData = new FormData();
-				formData.append('file', file);
-				this.$http.post('/upload', formData).then(
-					(resp) => {
-						console.log('success', resp);
-					},
-					(resp) => {
-						console.log('fail', resp);
+			if (!file) return;
+
+			const data = { 
+				onShow: true, 
+				text: '你选取了新文件，是否立即上传？',
+				btns: [{
+					text: '上传', 
+					fn: () => {
+						const formData = new FormData();
+						formData.append('file', file);
+						this.$http.post('/upload', formData).then(
+							(resp) => {
+								console.log('success', resp);
+							},
+							(resp) => {
+								console.log('fail', resp);
+							}
+						)
 					}
-				)
+				}]
 			}
+			this.$store.commit('setPrompt', data);
 		},
 		prompt () {
 			const data = { 
@@ -60,7 +70,7 @@ export default {
 	.dynamic {
 		font-size: px2rem(90px);
 		text-align: center;
-		margin-top: px2rem(30px);
+		margin-top: px2rem(90px);
 	}
 	input[type=button] {
 		width: px2rem(600px);
@@ -68,6 +78,10 @@ export default {
 		font-size: px2rem(52px);
 		border-radius: px2rem(16px);
 		border: 1px solid #ccc;
+		margin: .02rem 0;
+	}
+	input[type=button]:active {
+		background-color: #bbb;
 	}
 	input[type=file] {
 		display: none;

@@ -2,6 +2,9 @@ const router = require('express').Router();
 const Sqlite = require('./sqlite');
 const path = require('path');
 const multer = require('multer');
+const fse = require('fs-extra');
+
+fse.ensureDirSync('static/upload-files');
 
 //配置上传文件的信息
 const storage = multer.diskStorage({
@@ -9,7 +12,7 @@ const storage = multer.diskStorage({
 		cb(null, file.originalname);
 	},
 	destination: function (req, file, cb) {
-		cb(null, 'static/')
+		cb(null, 'static/upload-files/')
 	},
 });
 
@@ -121,8 +124,7 @@ router.post('/post_test', (req, res) => {
 });
 
 router.post('/upload', upload.single('file'), (req, res) => {
-	console.log(req);
-	res.send('upload ok');
+	res.send({ error: 0 });
 });
 
 module.exports = router;

@@ -14,11 +14,7 @@
 </template>
 
 <script>
-export default {
-	updated () {
-		console.log('updated');
-	}
-}
+export default {}
 </script>
 
 <style lang="scss" scoped>
