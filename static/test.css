@@ -1,0 +1,69 @@
+.conversation {
+		display: flex;
+		flex-direction: column;
+		height: 100%;
+		background-color: #f0f2f8;
+	}
+	.content {
+		flex: 1;
+		overflow-y: auto;
+	}
+	.footer {
+		height: 1.5rem;
+	}
+	.input {
+		height: .66rem;
+		display: flex;
+		margin-bottom: .04rem;
+	}
+	.text {
+		flex: 1;
+		border: none;
+		margin: 0 .1rem 0 .12rem;
+		border-radius: .06rem;
+		padding: .2rem;
+	}
+	.button {
+		width: 1rem;
+		margin-right: .12rem;
+		border: none;
+		border-radius: .12rem;
+		color: #f1f2f3;
+		background-color: #dddee2;
+		font-size: .28rem;
+	}
+	.toolbar {
+		height: .8rem;
+		display: flex;
+	}
+	.toolbar > b {
+		flex: 1;
+		background-repeat: no-repeat;
+		background-position: center;
+		background-size: .5rem;
+	}
+	.toolbar > b[name=record] {
+		background-image: url('../../assets/img/record.png');
+	}
+	.toolbar > b[name=picture] {
+		background-image: url('../../assets/img/picture.png');
+	}
+	.toolbar > b[name=camera] {
+		background-image: url('../../assets/img/camera.png');
+	}
+	.toolbar > b[name=red_package] {
+		background-image: url('../../assets/img/red_package.png');
+		background-size: .4rem;
+	}
+	.toolbar > b[name=gif] {
+		background-image: url('../../assets/img/gif.png');
+		background-size: .42rem;
+	}
+	.toolbar > b[name=smile] {
+		background-image: url('../../assets/img/smile.png');
+		background-size: .48rem;
+	}
+	.toolbar > b[name=add2] {
+		background-image: url('../../assets/img/add2.png');
+		background-size: .44rem;
+	}

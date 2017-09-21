@@ -15,6 +15,9 @@
 
 <script>
 export default {
+	updated () {
+		console.log('updated');
+	}
 }
 </script>
 

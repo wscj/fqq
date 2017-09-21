@@ -2,6 +2,7 @@
 	<div class="dynamic">
 		<input type="button" value="等待窗口"  @click="loadding">
 		<input type="button" value="上传文件"  @click="upload">
+		<input type="button" value="提示窗口"  @click="prompt">
 		<input type="file" name="upload" @change="uploadChange">
 	</div>
 </template>
@@ -16,10 +17,7 @@ export default {
 	},
 	methods: {
 		loadding () {
-			this.$store.commit('setLoading', { onShow: true });
-			setTimeout(() => {
-				this.$store.commit('setLoading', { onShow: false });
-			}, 2000);
+			this.$store.dispatch('loadding', { onShow: true, text: '加载文字...', time: 1500 });
 		},
 		upload () {
 			this.$el.querySelector('input[name=upload]').click();
@@ -38,6 +36,20 @@ export default {
 					}
 				)
 			}
+		},
+		prompt () {
+			const data = { 
+				onShow: true, 
+				text: '是否继续？',
+				btns: [{
+					text: '继续', 
+					fn: function() { console.log('继续'); }
+				}, {
+					text: '退出',
+					fn: function() { console.log('退出'); }
+				}]
+			}
+			this.$store.commit('setPrompt', data);
 		}
 	}
 }

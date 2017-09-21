@@ -13,11 +13,13 @@
 			</keep-alive>
 		</transition>
 		<v-loading v-show="this.$store.state.loading.show"></v-loading>
+		<v-prompt v-if="this.$store.state.prompt.show"></v-prompt>
 	</div>
 </template>
 
 <script>
 import vLoading from './components/common/Loading';
+import vPrompt from './components/common/Prompt';
 export default {
 	data () {
 		return {
@@ -49,7 +51,8 @@ export default {
 		afterLeave: function(el) {}
 	},
 	components: {
-		vLoading
+		vLoading,
+		vPrompt
 	}
 }
 </script>

@@ -65,19 +65,18 @@ export default {
 							localStorage.user = JSON.stringify(resp.body.user);
 							const to = this.$route.query.redirect || '/';
 							this.$store.commit('setUser', resp.body.user);
-							this.$store.commit('setLoading', { onShow: true, text: '故意延迟，等一下咯！！'});
+							this.$store.dispatch('loadding', { onShow: true, text: '故意延迟，等一下咯！！', time: 1000 });
 							setTimeout(() => {
-								this.$store.commit('setLoading', { onShow: false });
 								this.$router.replace({ path: to });
 								this.pwd = ''; //密码要清空
 								console.log('登录成功');
-							}, 1200);
+							}, 1000);
 						}
 						else {
 							this.fn.warn(resp.body.error);
 						}
 					},
-					(resp) => { console.error('fail', resp);}
+					(resp) => { console.error('fail', resp); }
 				)
 			}
 		},
