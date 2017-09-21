@@ -14,11 +14,10 @@ export default {
 	},
 	methods: {
 		click () {
-			// this.$store.commit('setLoading', { onShow: true });
-			// setTimeout(() => {
-			// 	this.$store.commit('setLoading', { onShow: false });
-			// }, 2000);
-			this.$store.commit('setPrompt', { onShow: true, text: '是否继续？', btns: ['aa', 'bb', 'cc'] });
+			this.$store.commit('setLoading', { onShow: true });
+			setTimeout(() => {
+				this.$store.commit('setLoading', { onShow: false });
+			}, 1500);
 		}
 	}
 }

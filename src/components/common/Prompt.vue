@@ -2,7 +2,7 @@
 	<div class="prompt">
 		<div class="container" >
 			<p>{{ this.$store.state.prompt.text }}</p>
-			<span v-for="btn in this.$store.state.prompt.btns">{{ btn }}</span>
+			<span v-for="btn in btns" @click="btn.fn">{{ btn.text }}</span>
 			<div class="gap"></div>
 			<span @click="cancel">取消</span>
 		</div>
@@ -11,8 +11,14 @@
 
 <script>
 export default {
+	computed: {
+		btns () {
+			return this.$store.state.prompt.btns;
+		}
+	},
 	methods: {
 		cancel () {
+			this.$el.style.background = 'rgba(0, 0, 0, 0)';
 			Velocity(
 				this.$el.querySelector('.container'), 
 				{ height: '0rem' }, 
@@ -27,12 +33,14 @@ export default {
 		}
 	},
 	mounted () {
-		let height = this.$el.querySelector('.container').offsetHeight
+		const container = this.$el.querySelector('.container');
+		let height = container.offsetHeight;
 		//转化为rem，其实不转直接用height也是可以的
 		height = height / (document.documentElement.clientWidth / 360 * 3.125 * 16) + 'rem';
-		this.$el.querySelector('.container').style.height = 0;
+		container.style.height = 0;
+		this.$el.style.background = 'rgba(0, 0, 0, .5)';
 		Velocity(
-			this.$el.querySelector('.container'), 
+			container, 
 			{ height: height }, 
 			{ 
 				duration: 200, 
@@ -51,7 +59,8 @@ export default {
 		left: 0;
 		height: 100%;
 		width: 100%;
-		background: rgba(0, 0, 0, .5);
+		background: rgba(0, 0, 0, 0);
+		transition: background 200ms linear;
 		z-index: 999;
 		.container {
 			position: absolute;

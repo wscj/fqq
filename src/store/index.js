@@ -14,8 +14,8 @@ const store = new Vuex.Store({
     },
     prompt: {
     	show: false,
-    	text: '是否继续',
-    	btns: ['是', '否']
+    	text: '',
+    	btns: []
     }
   },
   mutations
