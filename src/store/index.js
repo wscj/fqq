@@ -11,6 +11,11 @@ const store = new Vuex.Store({
     loading: {
       show: false,
       text: '加载中...'
+    },
+    prompt: {
+    	show: false,
+    	text: '是否继续',
+    	btns: ['是', '否']
     }
   },
   mutations
