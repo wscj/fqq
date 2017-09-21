@@ -1,6 +1,19 @@
 const router = require('express').Router();
 const Sqlite = require('./sqlite');
 const path = require('path');
+const multer = require('multer');
+
+//配置上传文件的信息
+const storage = multer.diskStorage({
+	filename: function(req, file, cb) {
+		cb(null, file.originalname);
+	},
+	destination: function (req, file, cb) {
+		cb(null, 'static/')
+	},
+});
+
+const upload = multer({ storage: storage });
 
 //处理身份验证
 router.use(function(req, res, next) {
@@ -105,6 +118,11 @@ router.get('/login', (req, res) => {
 
 router.post('/post_test', (req, res) => {
 	res.send('test ok');
+});
+
+router.post('/upload', upload.single('file'), (req, res) => {
+	console.log(req);
+	res.send('upload ok');
 });
 
 module.exports = router;

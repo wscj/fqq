@@ -1,6 +1,8 @@
 <template>
 	<div class="dynamic">
-		<input type="button" value="Loading"  @click="click">
+		<input type="button" value="等待窗口"  @click="loadding">
+		<input type="button" value="上传文件"  @click="upload">
+		<input type="file" name="upload" @change="uploadChange">
 	</div>
 </template>
 
@@ -13,11 +15,29 @@ export default {
 		}
 	},
 	methods: {
-		click () {
+		loadding () {
 			this.$store.commit('setLoading', { onShow: true });
 			setTimeout(() => {
 				this.$store.commit('setLoading', { onShow: false });
 			}, 2000);
+		},
+		upload () {
+			this.$el.querySelector('input[name=upload]').click();
+		},
+		uploadChange (event) {
+			let file = event.target.files[0];
+			if (file) {
+				const formData = new FormData();
+				formData.append('file', file);
+				this.$http.post('/upload', formData).then(
+					(resp) => {
+						console.log('success', resp);
+					},
+					(resp) => {
+						console.log('fail', resp);
+					}
+				)
+			}
 		}
 	}
 }
@@ -30,11 +50,14 @@ export default {
 		text-align: center;
 		margin-top: px2rem(30px);
 	}
-	input {
-		width: px2rem(400px);
+	input[type=button] {
+		width: px2rem(600px);
 		height: px2rem(120px);
 		font-size: px2rem(52px);
 		border-radius: px2rem(16px);
-		border: none;
+		border: 1px solid #ccc;
+	}
+	input[type=file] {
+		display: none;
 	}
 </style>

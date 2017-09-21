@@ -149,6 +149,7 @@ export default {
 		margin: 0 px2rem(15px) 0 px2rem(18px);
 		border-radius: px2rem(9px);
 		padding: px2rem(30px);
+		font-size: px2rem(42px);
 	}
 	.button {
 		width: px2rem(150px);
