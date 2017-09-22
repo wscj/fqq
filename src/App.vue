@@ -23,12 +23,18 @@ import vPrompt from './components/common/Prompt';
 export default {
 	data () {
 		return {
-			trans: true //控制切换是否需要动画
+			trans: true, //控制切换是否需要动画
+			mode: true, // 动画方向　true:　新窗口从右侧进入　false: 新窗口从左侧进入
 		}
 	},
 	watch: {
 		'$route' (to, from) {
-			this.trans = (from.path.indexOf('show-panel') > -1) || (to.path.indexOf('show-panel') > -1);
+			//showPanel与其他窗口的切换需要动画
+			const onlyOneShowPanel = (from.path.indexOf('show-panel') > -1) ^ (to.path.indexOf('show-panel') > -1);
+			//login与其他窗口的切换需要动画
+			const onlyOneLogin = (from.path.indexOf('login') > -1) ^ (to.path.indexOf('login') > -1);
+			this.trans = onlyOneShowPanel || onlyOneLogin;
+			this.mode = (to.path.indexOf('show-panel') > -1) || (to.path.indexOf('login') > -1);
 		}
 	},
 	methods: {
@@ -37,12 +43,17 @@ export default {
 			done();
 		},
 		afterEnter: function(el) {
-			this.trans && Velocity(el, { left: '0rem' }, { duration: 250, easing: 'ease' });
+			if (this.trans) {
+				const left = this.mode ? '7.2rem' : '-7.2rem';
+				el.style.left = left;
+				this.trans && Velocity(el, { left: '0rem' }, { duration: 250, easing: 'ease' });
+			}
 		},
 		beforeLeave: function(el) {},
 		leave: function(el, done) {
 			if (this.trans) {
-				const left = el.getAttribute('name') === 'show-panel' ? '7.2rem' : '-7.2rem';
+				el.style.left = '0rem';
+				const left = this.mode ? '-7.2rem' : '7.2rem';
 				Velocity(el, { left: left }, { duration: 250, complete: done, easing: 'ease' });
 			} else {
 				done();

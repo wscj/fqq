@@ -1,5 +1,5 @@
 <template>
-	<div class="panel">
+	<div class="panel" name="main-panel">
 		<div class="info-panel" :name="this.$store.state.sidebar" id="info-panel">
 			<v-setting-panel></v-setting-panel>
 		</div>
@@ -71,12 +71,12 @@ export default {
 			this.$store.commit('hideSidebar');
 		}
 	},
-	activated () {
-		//处理特殊情况：如果是退出登录后再登录，则这里的当前的left为-7.2rem，需设置为0
-		if (this.$route.matched[0].name === 'main') {
-			this.$el.style.left = '0rem';
-		}
-	},
+	// activated () {
+	// 	//处理特殊情况：如果是退出登录后再登录，则这里的当前的left为-7.2rem，需设置为0
+	// 	if (this.$route.matched[0].name === 'main') {
+	// 		this.$el.style.left = '0rem';
+	// 	}
+	// },
 }
 </script>
 

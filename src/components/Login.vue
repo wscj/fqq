@@ -1,5 +1,5 @@
 <template>
-	<div class="login" @keyup.enter="login">
+	<div class="login" @keyup.enter="login" name="login-panel">
 		<div class="avatar">
 			<img :src="'/static/img/' + avatar + '.jpg'">
 		</div>
