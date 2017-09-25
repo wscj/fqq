@@ -14,12 +14,14 @@
 		</transition>
 		<v-loading v-show="this.$store.state.loading.show"></v-loading>
 		<v-prompt v-if="this.$store.state.prompt.show"></v-prompt>
+		<v-tip v-show="this.$store.state.tip.show"></v-tip>
 	</div>
 </template>
 
 <script>
 import vLoading from './components/common/Loading';
 import vPrompt from './components/common/Prompt';
+import vTip from './components/common/Tip';
 export default {
 	data () {
 		return {
@@ -63,7 +65,8 @@ export default {
 	},
 	components: {
 		vLoading,
-		vPrompt
+		vPrompt,
+		vTip
 	}
 }
 </script>

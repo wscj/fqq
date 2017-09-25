@@ -12,5 +12,9 @@ export default {
 	  	state.prompt.show = !!onShow;
 	  	state.prompt.text = text || '';
 	  	state.prompt.btns = btns;
+	},
+	setTip: (state, { onShow, text }) => {
+	  	state.tip.show = !!onShow;
+	  	state.tip.text = text || '';
 	}
 }

@@ -17,6 +17,10 @@ const store = new Vuex.Store({
     	show: false,
     	text: '',
     	btns: []
+    },
+    tip: {
+      show: false,
+      text: ''
     }
   },
   mutations,

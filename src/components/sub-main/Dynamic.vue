@@ -1,9 +1,10 @@
 <template>
 	<div class="dynamic">
 		<input type="button" value="等待窗口"  @click="loadding">
-		<input type="button" value="上传文件"  @click="upload">
 		<input type="button" value="提示窗口"  @click="prompt">
 		<input type="file" name="upload" @change="uploadChange">
+		<input type="button" value="上传文件"  @click="upload">
+		<!-- <input type="button" value="下载"  @click="downloadWithATag"> -->
 	</div>
 </template>
 
@@ -36,7 +37,7 @@ export default {
 						formData.append('file', file);
 						this.$http.post('/upload', formData).then(
 							(resp) => {
-								console.log('success', resp);
+								this.$store.dispatch('tip', { onShow: true, text: '文件上传成功' });
 							},
 							(resp) => {
 								console.log('fail', resp);
@@ -60,7 +61,14 @@ export default {
 				}]
 			}
 			this.$store.commit('setPrompt', data);
-		}
+		},
+		downloadWithATag () {
+			let aTag = document.createElement('a');
+			aTag.setAttribute('href', '/static/file-for-download.png');
+			aTag.setAttribute('download', 'download-with-a-tag.png');
+			aTag.click();
+			aTag = null;
+		},
 	}
 }
 </script>
@@ -78,7 +86,7 @@ export default {
 		font-size: px2rem(52px);
 		border-radius: px2rem(16px);
 		border: 1px solid #ccc;
-		margin: .02rem 0;
+		margin: px2rem(3px) 0;
 	}
 	input[type=button]:active {
 		background-color: #bbb;

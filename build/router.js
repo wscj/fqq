@@ -4,7 +4,7 @@ const path = require('path');
 const multer = require('multer');
 const fse = require('fs-extra');
 
-fse.ensureDirSync('static/upload-files');
+fse.ensureDirSync('upload-files');
 
 //配置上传文件的信息
 const storage = multer.diskStorage({
@@ -12,7 +12,7 @@ const storage = multer.diskStorage({
 		cb(null, file.originalname);
 	},
 	destination: function (req, file, cb) {
-		cb(null, 'static/upload-files/')
+		cb(null, 'upload-files/')
 	},
 });
 
@@ -55,6 +55,24 @@ router.post('/addMsg', (req, res) => {
 
 });
 
+router.get('/download', (req, res) => {
+
+	const file = path.join(__dirname, '../static/file-for-download.png');
+	res.set({
+		'Content-Type': 'image/png'
+	});
+
+	res.sendFile(file, err => {
+		if (err) {
+			console.log(err);
+			res.status(err.status).end();
+		}
+		else {
+			console.log('send success.');
+		}
+	})
+
+});
 
 router.get('/getConversation', (req, res) => {
 

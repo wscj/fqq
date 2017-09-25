@@ -34,7 +34,7 @@ export default {
 <style lang="scss" scoped>
 	@import '../../assets/sass/function';
 	.footer {
-		height: px2rem(183.3px);
+		height: px2rem(183px);
 		width: 100%;
 		border-top: 1px solid #e6e6e6;
 		display: flex;
@@ -43,6 +43,7 @@ export default {
 			flex: 1;
 			height: 100%;
 			text-align: center;
+			font-size: 0;
 		}
 		b {
 			display: inline-block;
