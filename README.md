@@ -18,7 +18,6 @@
 * 后端
 	* Node.js
 	* Express.js
-* 数据库
 	* Sqlite
 
 ### 其他说明
@@ -36,6 +35,6 @@ npm run dev
 # 打包成静态文件
 npm run build
 
-# 调试模式，增加`supervisor`与`inspect`方便后台`Node.js`的开发
+# 增加`supervisor`与`inspect`，方便后台`Node.js`的开发、调试
 npm run debug
 ```
