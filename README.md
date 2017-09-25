@@ -2,6 +2,8 @@
 
 > A Vue.js project
 
+![效果演示动态图](https://wscj.github.io/files/fqq.gif)
+
 ## Build Setup
 
 ``` bash
