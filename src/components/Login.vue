@@ -14,11 +14,8 @@
 				<input type="password" placeholder="密码" v-model="pwd">
 			</div>
 			<div class="btn">
-				<input type="button" @click="login" value="登录">
+				<input type="button" @click="login" value="登录" :style="styleObj">
 			</div>
-			<!-- <div class="btn">
-				<input type="button" @click="test" value="测试">
-			</div> -->
 		</div>
 	</div>
 </template>
@@ -30,6 +27,15 @@ export default {
 			account: '',
 			pwd: '',
 			avatar: 'default'
+		}
+	},
+	computed: {
+		styleObj () {
+			const disabled = this.account.length === 4 && this.pwd.length;
+			return {
+				color: disabled ? '#fff' : '#bbb',
+				background: disabled ? '#4b93fe' : '#e9ebec'
+			}
 		}
 	},
 	methods: {
@@ -50,6 +56,9 @@ export default {
 			}
 		},
 		login () {
+			if (!(this.account.length === 4 && this.pwd.length)) {
+				return;
+			}
 			if (!this.account.trim().length) {
 				this.fn.warn('帐号不能为空');
 			}
@@ -80,9 +89,6 @@ export default {
 				)
 			}
 		},
-		test () {
-			
-		}
 	},
 	mounted: function() {
 		this.$el.querySelector('#account').focus();
@@ -161,7 +167,7 @@ export default {
 		border-radius: px2rem(15px);
 		border: none;
 		font-size: px2rem(51px);
-		background-color: #4b93fe;
+		// background-color: #4b93fe;
 		color: #fff;
 	}
 	.account input::placeholder,
