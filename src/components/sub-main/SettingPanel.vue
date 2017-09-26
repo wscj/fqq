@@ -5,7 +5,7 @@
 				<img src="/static/img/qr_code.png">
 			</div>
 			<div class="top-center">
-				<img :src="'/static/img/' + this.$store.state.user.account + '.jpg'">
+				<img :src="'/static/img/' + this.$store.state.user.account + '.jpg'" @error="onerror">
 				<span>{{ this.$store.state.user.name }}</span>
 			</div>
 			<div class="top-bottom">
@@ -39,6 +39,9 @@ export default {
 	methods: {
 		set: function() {
 			this.$router.push('/show-panel');
+		},
+		onerror (e) {
+			e.target.src = '/static/img/default.jpg';
 		}
 	}
 }

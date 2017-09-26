@@ -95,7 +95,7 @@ export default {
 			}, 0);
 		},
 		back () {
-			this.$router.back();
+			this.$router.replace({ path: '/login' });
 		}
 	},
 	mounted: function() {

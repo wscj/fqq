@@ -1,6 +1,8 @@
 <template>
 	<div class="header">
-		<div class="avatar" @click="imgClick"><img :src="'/static/img/' + this.$store.state.user.account + '.jpg'"></div>
+		<div class="avatar" @click="imgClick">
+			<img :src="'/static/img/' + this.$store.state.user.account + '.jpg'" @error="onError">
+		</div>
 		<span @click="test">{{ parentData.title }}</span>
 		<div :class="parentData.page" name="add">
 			<span name="msg"></span>
@@ -17,6 +19,9 @@ export default {
 		imgClick: function() {
 			this.$store.commit('showSidebar');
 			// this.$emit('avatarClick');
+		},
+		onError (e) {
+			e.target.src = '/static/img/default.jpg';
 		},
 		test () {
 		}

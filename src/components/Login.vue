@@ -1,7 +1,7 @@
 <template>
 	<div class="login" @keyup.enter="login" name="login-panel">
 		<div class="avatar">
-			<img :src="'/static/img/' + avatar + '.jpg'">
+			<img :src="'/static/img/' + avatar + '.jpg'" @error="onerror">
 		</div>
 		<div class="info">
 			<div class="account">
@@ -42,18 +42,8 @@ export default {
 	methods: {
 		input (e) {
 			var value = e.target.value;
-			if (value.length === 4) {
-				this.$http.get(`/static/img/${value}.jpg`).then(
-					r => {
-						if (r.body !== "Verify fail!") {
-							this.avatar = value;
-						}
-					}
-				)
-			} else {
-				if (this.avatar !== 'default') {
-					this.avatar = 'default';
-				}
+			if (value.length >= 4 && value.length <= 11) {
+				this.avatar = value;
 			}
 		},
 		login () {
@@ -91,7 +81,10 @@ export default {
 			}
 		},
 		gotoRegister () {
-			this.$router.push({ path: '/register' });
+			this.$router.replace({ path: '/register' });
+		},
+		onerror (e) {
+			e.target.src = '/static/img/default.jpg';
 		}
 	},
 	mounted: function() {
