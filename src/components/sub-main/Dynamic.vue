@@ -4,7 +4,7 @@
 		<input type="button" value="提示窗口"  @click="prompt">
 		<input type="file" name="upload" @change="uploadChange">
 		<input type="button" value="上传文件"  @click="upload">
-		<!-- <input type="button" value="下载"  @click="downloadWithATag"> -->
+		<input type="button" value="test"  @click="test">
 	</div>
 </template>
 
@@ -17,6 +17,17 @@ export default {
 		}
 	},
 	methods: {
+		test () {
+			// const param = { account: '9999', pwd: '123' }
+			// this.$http.post('/register', param).then(
+			// 	resp => {
+			// 		console.log(resp);
+			// 	},
+			// 	resp => {
+			// 		console.log(resp);
+			// 	}
+			// )
+		},
 		loadding () {
 			this.$store.dispatch('loadding', { onShow: true, text: '加载文字...', time: 1500 });
 		},

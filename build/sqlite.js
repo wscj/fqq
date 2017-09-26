@@ -378,4 +378,38 @@
 		});
 	}
 
+	/**
+	 * 注册
+	 * @param  {object} arg
+	 * @param {string} arg.account 注册帐号
+	 * @param {string} arg.pwd 注册密码
+	 * @param {function} arg.callback 回调函数，错误码
+	 *
+	 * |error|说明|
+	 * |--|--|
+	 * |0|注册成功|
+	 * |1|帐号已被注册|
+	 */
+	Sqlite.register = function(arg) {
+		const sql = `select 1 from t_user where account = ${arg.account}`;
+		db.get(sql, (err, row) => {
+			err && console.error(err);
+			if (!err) {
+				// 帐号未被注册
+				if (row === undefined) {
+					const sqlStr = `insert into t_user (account, pwd) 
+						values ('${arg.account}', '${arg.pwd}')`
+					db.run(sqlStr, err => {
+						err && console.log(err);
+						!err && arg.callback && arg.callback({ error: 0 });
+					});
+				}
+				// 帐号已被注册
+				else {
+					arg.callback && arg.callback({ error: 1 });
+				}
+			}
+		});
+	}
+
 }(module.exports))

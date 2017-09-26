@@ -145,4 +145,22 @@ router.post('/upload', upload.single('file'), (req, res) => {
 	res.send({ error: 0 });
 });
 
+// 错误码为２：帐号不符合规范
+router.post('/register', (req, res) => {
+	const account = Number(req.body.account) + '';
+	//帐号不是阿拉伯数字
+	if (isNaN(Number(req.body.account))) {
+		res.send({ error: 2 });
+	}
+	else if (account.length < 4 || account.length > 11) {
+		res.send({ error: 2 });
+	}
+	else {
+		req.body.callback = function(param) {
+			res.send(param);
+		}
+		Sqlite.register(req.body);
+	}
+});
+
 module.exports = router;

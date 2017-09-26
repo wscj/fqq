@@ -31,7 +31,7 @@ export default {
 	},
 	computed: {
 		styleObj () {
-			const disabled = this.account.length === 4 && this.pwd.length;
+			const disabled = this.account.length >= 4 && this.account.length < 12 && this.pwd.length;
 			return {
 				color: disabled ? '#fff' : '#bbb',
 				background: disabled ? '#4b93fe' : '#e9ebec'
