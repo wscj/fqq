@@ -11,6 +11,7 @@ import Setting from '@/components/sub-show/Setting'
 import NoTransitionPanel from '@/components/NoTransitionPanel'
 import SearchPage from '@/components/sub-no-trans/SearchPage'
 import Conversation from '@/components/sub-show/Conversation'
+import Register from '@/components/Register'
 
 import Temp from '@/components/Temp'
 
@@ -20,6 +21,9 @@ Vue.use(Router)
 
 const router = new Router({
 	routes: [{
+        path: '/register',
+        component: Register,
+    }, {
         path: '/login',
         component: Login,
     }, {

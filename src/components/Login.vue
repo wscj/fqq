@@ -7,7 +7,7 @@
 			<div class="account">
 				<b class="user"></b>
 				<input type="number" id="account" @input="input" v-model="account"
-					 placeholder="4位数字帐号" autocomplete="off">
+					 placeholder="4~11位数字帐号" autocomplete="off">
 			</div>
 			<div class="password">
 				<b class="pwd"></b>
@@ -16,6 +16,7 @@
 			<div class="btn">
 				<input type="button" @click="login" value="登录" :style="styleObj">
 			</div>
+			<p class="register" @click="gotoRegister">注册新用户</p>
 		</div>
 	</div>
 </template>
@@ -89,6 +90,9 @@ export default {
 				)
 			}
 		},
+		gotoRegister () {
+			this.$router.push({ path: '/register' });
+		}
 	},
 	mounted: function() {
 		this.$el.querySelector('#account').focus();
@@ -110,7 +114,7 @@ export default {
 		display: flex;
 		justify-content: center;
 		align-items: center;
-		height: px2rem(750px);
+		height: px2rem(700px);
 		/*background-color: pink;*/
 	}
 	.avatar img {
@@ -159,7 +163,7 @@ export default {
 		font-size: px2rem(54px);
 	}
 	.btn {
-		margin: px2rem(150px) px2rem(60px);
+		margin: px2rem(150px) px2rem(60px) 0;
 	}
 	.btn input {
 		width: 100%;
@@ -173,5 +177,10 @@ export default {
 	.account input::placeholder,
 	.password input::placeholder {
 		color: #ccc;
+	}
+	.register {
+		text-align: right;
+		padding: px2rem(20px) px2rem(70px);
+		color: #0366d6;
 	}
 </style>
