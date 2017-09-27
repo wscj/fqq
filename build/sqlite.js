@@ -32,8 +32,8 @@
 			create table t_user (
 				account Varchar(10) not null,
 				pwd Varchar(50) not null,
-				name NVarchar(20),
-				signature NVarchar(50),
+				name NVarchar(20) default '默认昵称',
+				signature NVarchar(50) default '默认个性签名',
 				sex Int2 default 1
 			)
 		`);

@@ -27,7 +27,7 @@ router.use(function(req, res, next) {
 	}
 
 	//登录的请求不需要token
-	if (req.url.substr(0, 6) !== '/login') {
+	if (req.url.substr(0, 6) !== '/login' && req.url.substr(0, 9) !== '/register') {
 		const token = req.headers['authorization'];
 		if (!token) {
 			unvalid(res);

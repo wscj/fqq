@@ -76,8 +76,7 @@ export default {
 							onShow: true, 
 							text: '注册完成',
 							callback: () => {
-								this.$router.back();
-								this.pwd = this.account = this.pwdConfirm = '';
+								this.$router.replace({ path: '/login' });
 							}
 						});
 					}
@@ -100,6 +99,9 @@ export default {
 	},
 	mounted: function() {
 		this.$el.querySelector('#account').focus();
+	},
+	activated () {
+		this.pwd = this.account = this.pwdConfirm = '';
 	}
 }
 </script>
