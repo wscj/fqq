@@ -27,14 +27,14 @@
 
 ```bash
 # 安装依赖
-npm i
+$ npm i
 
 # 运行，请手动在浏览器打开localhost:3000
-npm run dev
+$ npm run dev
 
 # 打包成静态文件
-npm run build
+$ npm run build
 
 # 增加`supervisor`与`inspect`，方便后台`Node.js`的开发、调试
-npm run debug
+$ npm run debug
 ```
