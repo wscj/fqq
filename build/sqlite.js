@@ -180,13 +180,13 @@
 		`);
 		sqls.push(`
 			insert into t_msg (from_id, to_id, conversation_id, content, time)
-			select 6, 1, '1_6', '嗯嗯', current_timestamp
-			union select 6, 2, '2_6', '敲代码去，我在自己搞个vue.js的项目来玩，不然老学不到这些新的技术', datetime(1493941446, 'unixepoch')
-			union select 3, 6, '3_6', '我有一把大大的雨伞', datetime(1493941466, 'unixepoch')
-			union select 6, 3, '3_6', '明天记得带过来，可能会下大暴雨啊', datetime(1493941468, 'unixepoch')
-			union select 3, 6, '3_6', 'ok', datetime(1493941469, 'unixepoch')
-			union select 6, 4, '4_6', '是的，就是这么6', datetime(1493941436, 'unixepoch')
-			union select 5, 6, '5_6', '[好咧]', datetime(1493941426, 'unixepoch')
+			select 6, 1, '1_6', '嗯嗯', strftime('%Y-%m-%d %H:%M:%f', 'now', 'localtime')
+			union select 6, 2, '2_6', '敲代码去，我在自己搞个vue.js的项目来玩，不然老学不到这些新的技术', strftime('%Y-%m-%d %H:%M:%f', 1493941446.123, 'unixepoch')
+			union select 3, 6, '3_6', '我有一把大大的雨伞', strftime('%Y-%m-%d %H:%M:%f', 1493941466.123, 'unixepoch')
+			union select 6, 3, '3_6', '明天记得带过来，可能会下大暴雨啊', strftime('%Y-%m-%d %H:%M:%f', 1493941468.123, 'unixepoch')
+			union select 3, 6, '3_6', 'ok', strftime('%Y-%m-%d %H:%M:%f', 1493941469.123, 'unixepoch')
+			union select 6, 4, '4_6', '是的，就是这么6', strftime('%Y-%m-%d %H:%M:%f', 1493941436.123, 'unixepoch')
+			union select 5, 6, '5_6', '[好咧]', strftime('%Y-%m-%d %H:%M:%f', 1493941426.123, 'unixepoch')
 		`);
 
 		(function exec(sqls) {
@@ -214,7 +214,7 @@
 		const cID = Math.min(arg.fromID, arg.toID) + '_' + Math.max(arg.fromID, arg.toID);
 		const sql = `
 			insert into t_msg (from_id, to_id, conversation_id, group_id, content, time)
-			values (${arg.fromID}, ${arg.toID}, '${cID}', ${arg.groupID || 0}, '${arg.msg}', current_timestamp)
+			values (${arg.fromID}, ${arg.toID}, '${cID}', ${arg.groupID || 0}, '${arg.msg}', strftime('%Y-%m-%d %H:%M:%f', 'now', 'localtime'))
 		`;
 		db.run(sql, err => {
 			err && console.error(err);

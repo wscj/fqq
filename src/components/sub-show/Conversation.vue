@@ -69,6 +69,7 @@ export default {
 		},
 		send () {
 			if (this.text.length) {
+				//发送消息
 				this.list.push({
 					avatar: JSON.parse(localStorage.user).account,
 					msg: this.text,
@@ -78,21 +79,6 @@ export default {
 				setTimeout(function() {
 					content.scrollTop = content.scrollHeight - content.offsetHeight;
 				}, 60);
-				setTimeout(() => {
-					let msg = this.autoReplyMsg.shift() || '你是猪，你说的我听不懂。。';
-					this.list.push({
-						avatar: this.friendAccount,
-						msg: msg
-					});
-					this.$http.post('/addMsg', {
-						fromID: this.$route.query.friendID,
-						toID: JSON.parse(localStorage.user).rowid,
-						msg: msg
-					});
-					setTimeout(() => {
-						content.scrollTop = content.scrollHeight - content.offsetHeight;
-					}, 60);
-				}, 1000);
 
 				this.$http.post('/addMsg', {
 					fromID: JSON.parse(localStorage.user).rowid,
@@ -100,6 +86,21 @@ export default {
 					msg: this.text
 				});
 				this.text = '';
+
+				//自动回复
+				let msg = this.autoReplyMsg.shift() || '你是猪，你说的我听不懂。。';
+				this.list.push({
+					avatar: this.friendAccount,
+					msg: msg
+				});
+				this.$http.post('/addMsg', {
+					fromID: this.$route.query.friendID,
+					toID: JSON.parse(localStorage.user).rowid,
+					msg: msg
+				});
+				setTimeout(() => {
+					content.scrollTop = content.scrollHeight - content.offsetHeight;
+				}, 60);
 			}
 		}
 	},
