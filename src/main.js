@@ -14,11 +14,12 @@ Vue.http.interceptors.push(function(request, next) {
 
   // modify method
   // request.method = 'POST';
-  request.headers.set('Authorization', localStorage.token);
+  request.headers.set('x-access-token', localStorage.token);
 
   // continue to next interceptor
   next(function(response) {
-    if (response.headers.map && response.headers.map.verify) {
+    //token校验失败，服务器拒绝
+    if (response.status === 403) {
     	this.$router.push({
     		path: '/login',
     		query: {

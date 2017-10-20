@@ -21,20 +21,20 @@
 	* Sqlite
 
 ### 其他说明
-* 当前没有注册功能，请使用帐号6661、6662、……、6666登录，其中6666初始化数据最完整，建议使用，密码统一为123
+* 新注册的用户没有好友数据，当前没有添加好友的功能，请使用已有帐号6661、6662、……、6666登录，其中6666初始化数据最完整，建议使用，密码统一为123
 
 ### 安装与运行
 
 ```bash
 # 安装依赖
-npm i
+$ npm i
 
 # 运行，请手动在浏览器打开localhost:3000
-npm run dev
+$ npm run dev
 
 # 打包成静态文件
-npm run build
+$ npm run build
 
 # 增加`supervisor`与`inspect`，方便后台`Node.js`的开发、调试
-npm run debug
+$ npm run debug
 ```

@@ -22,13 +22,13 @@ const upload = multer({ storage: storage });
 router.use(function(req, res, next) {
 
 	function unvalid(res) {
-		res.append('Verify', 'fail');
-		res.sendFile(path.join(__dirname, '../index.html'));
+		// res.append('Verify', 'fail');
+		res.status(403).sendFile(path.join(__dirname, '../index.html'));
 	}
 
 	//登录的请求不需要token
 	if (req.url.substr(0, 6) !== '/login' && req.url.substr(0, 9) !== '/register') {
-		const token = req.headers['authorization'];
+		const token = req.body.token || req.query.token || req.headers['x-access-token'];
 		if (!token) {
 			unvalid(res);
 		}
