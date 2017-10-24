@@ -4,7 +4,7 @@
 		<input type="button" value="提示窗口"  @click="prompt">
 		<input type="file" name="upload" @change="uploadChange">
 		<input type="button" value="上传文件"  @click="upload">
-		<input type="button" value="test"  @click="test">
+		<!-- <input type="button" value="test"  @click="test"> -->
 	</div>
 </template>
 
@@ -87,8 +87,10 @@ export default {
 <style lang="scss" scoped>
 	@import '../../assets/sass/function';
 	.dynamic {
+		display: flex;
+		flex-direction: column;
+		align-items: center;
 		font-size: px2rem(90px);
-		text-align: center;
 		margin-top: px2rem(90px);
 	}
 	input[type=button] {
@@ -97,7 +99,7 @@ export default {
 		font-size: px2rem(52px);
 		border-radius: px2rem(16px);
 		border: 1px solid #ccc;
-		margin: px2rem(3px) 0;
+		margin: px2rem(15px) 0;
 	}
 	input[type=button]:active {
 		background-color: #bbb;
