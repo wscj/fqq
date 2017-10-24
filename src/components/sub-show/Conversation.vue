@@ -1,5 +1,5 @@
 <template>
-	<div class="conversation">
+	<div class="conversation" @keyup.enter="send">
 		<v-header @leftClick="goback" :bTitle="title"></v-header>
 		<div class="content">
 			<v-msg v-for="(item, key, index) in list" :avatar="item.avatar" 
@@ -48,7 +48,7 @@ export default {
 			// }],
 			title: '',
 			friendAccount: '',
-			autoReplyMsg: ['猪，你来啦', '黑猪白猪你是小猪猪']
+			autoReplyMsg: ['找我啥事？', '啥？你说啥？']
 		}
 	},
 	computed: {
@@ -87,20 +87,22 @@ export default {
 				});
 				this.text = '';
 
-				//自动回复
-				let msg = this.autoReplyMsg.shift() || '你是猪，你说的我听不懂。。';
-				this.list.push({
-					avatar: this.friendAccount,
-					msg: msg
-				});
-				this.$http.post('/addMsg', {
-					fromID: this.$route.query.friendID,
-					toID: JSON.parse(localStorage.user).rowid,
-					msg: msg
-				});
+				//自动回复，延迟半秒，体验更真实
 				setTimeout(() => {
-					content.scrollTop = content.scrollHeight - content.offsetHeight;
-				}, 60);
+					let msg = this.autoReplyMsg.shift() || '我只是个机器人，听不懂你说啥。。。';
+					this.list.push({
+						avatar: this.friendAccount,
+						msg: msg
+					});
+					this.$http.post('/addMsg', {
+						fromID: this.$route.query.friendID,
+						toID: JSON.parse(localStorage.user).rowid,
+						msg: msg
+					});
+					setTimeout(() => {
+						content.scrollTop = content.scrollHeight - content.offsetHeight;
+					}, 60);
+				}, 500);
 			}
 		}
 	},
