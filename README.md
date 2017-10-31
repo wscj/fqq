@@ -4,7 +4,7 @@
 * 本项目前端部分打包成静态文件后，可结合[另一个项目](https://github.com/wscj/fqq-backend)测试生产模式
 
 ### 效果演示（没有实时更新）
-![效果演示动态图](https://wscj.github.io/files/fqq.gif)
+![效果演示动态图](https://github.com/wscj/static-resource/blob/master/images/fqq.gif)
 
 ### 技术栈
 
