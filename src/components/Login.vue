@@ -42,9 +42,7 @@ export default {
 	methods: {
 		input (e) {
 			var value = e.target.value;
-			if (value.length >= 4 && value.length <= 11) {
-				this.avatar = value;
-			}
+			this.avatar = (value.length >= 4 && value.length <= 11) ? value : '-';
 		},
 		login () {
 			if (!(this.account.length === 4 && this.pwd.length)) {
