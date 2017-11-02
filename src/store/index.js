@@ -21,6 +21,9 @@ const store = new Vuex.Store({
     tip: {
       show: false,
       text: ''
+    },
+    pullRefresh: {
+      text: '下拉刷新'
     }
   },
   mutations,

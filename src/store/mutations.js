@@ -16,5 +16,8 @@ export default {
 	setTip: (state, { onShow, text }) => {
 	  	state.tip.show = !!onShow;
 	  	state.tip.text = text || '';
+	},
+	setPullRefresh: (state, { text }) => {
+		state.pullRefresh.text = text;
 	}
 }
