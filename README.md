@@ -35,6 +35,6 @@ $ npm run dev
 # 打包成静态文件
 $ npm run build
 
-# 增加`supervisor`与`inspect`，方便后台`Node.js`的开发、调试
+# 增加supervisor与inspect，方便后台Node.js的开发、调试
 $ npm run debug
 ```
