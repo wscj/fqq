@@ -17,7 +17,20 @@ export default {
 	  	state.tip.show = !!onShow;
 	  	state.tip.text = text || '';
 	},
-	setPullRefresh: (state, { text }) => {
-		state.pullRefresh.text = text;
+	setPullRefresh: (state, { text, height, hasRotate, hasLoading, hasSuccess }) => {
+		if (typeof text === 'string')
+			state.pullRefresh.text = text;
+
+		if (typeof height === 'number')
+			state.pullRefresh.height = height;
+
+		if (typeof hasRotate !== 'undefined')
+			state.pullRefresh.hasRotate = !!hasRotate;
+
+		if (typeof hasLoading !== 'undefined')
+			state.pullRefresh.hasLoading = !!hasLoading;
+
+		if (typeof hasSuccess !== 'undefined')
+			state.pullRefresh.hasSuccess = !!hasSuccess;
 	}
 }

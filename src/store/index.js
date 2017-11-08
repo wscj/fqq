@@ -23,7 +23,11 @@ const store = new Vuex.Store({
       text: ''
     },
     pullRefresh: {
-      text: '下拉刷新'
+      text: '下拉刷新',
+      height: 0,
+      hasRotate: false,
+      hasLoading: false,
+      hasSuccess: false,
     }
   },
   mutations,
