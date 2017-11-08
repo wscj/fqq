@@ -1,7 +1,7 @@
 <template>
-	<div class="pull-refresh">
+	<div :class="mainCls" :style="main">
 		<div class="bottom">
-			<b class="icon"></b>
+			<b :class="iconCls"></b>
 			<div class="text-c">
 				<span class="icon-success"></span>
 				<span class="text">{{ this.$store.state.pullRefresh.text }}</span>
@@ -17,8 +17,23 @@ export default {
 		}
 	},
 	computed: {
-		height () {
-			return this.$store.state.pullRefresh.height;
+		main () {
+			return {
+				height: this.$store.state.pullRefresh.height + 'px'
+			}
+		},
+		mainCls () {
+			return {
+				'pull-refresh': true,
+				success: this.$store.state.pullRefresh.hasSuccess
+			}
+		},
+		iconCls () {
+			return {
+				icon: true,
+				rotate: this.$store.state.pullRefresh.hasRotate,
+				loading: this.$store.state.pullRefresh.hasLoading,
+			}
 		}
 	}
 }

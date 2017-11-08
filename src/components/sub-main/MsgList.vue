@@ -2,7 +2,7 @@
 	<div>
 		<v-pull-refresh></v-pull-refresh>
 		<v-search :clickEvent="showsearch"></v-search>
-		<ul @touchstart="touchstart" @touchmove="touchmove" @touchend="touchend" @click="test">
+		<ul @touchstart="touchstart" @touchmove="touchmove" @touchend="touchend">
 			<li v-for="chat in chats">
 				<v-msg-item :chatInfo="chat"></v-msg-item>
 			</li>
@@ -31,10 +31,6 @@ export default {
 		this.getData();
 	},
 	methods: {
-		test() {
-			// const a = this.$el.querySelector('.pull-refresh .icon')
-			// console.log(a, 333)
-		},
 		getData () {
 			this.$http.get('/getMsgList').then(
 				(resp) => {
@@ -56,6 +52,7 @@ export default {
 					{ 
 						duration: 200, 
 						complete: () => {
+							_this.$store.commit('setPullRefresh', { height: lastHeight });
 							resolve();
 						}
 					}
@@ -72,41 +69,36 @@ export default {
 			this.touchInfo.pageY = touch.pageY;
 		},
 		touchmove (event) {
-			const pull = this.$el.querySelector('.pull-refresh');
 			const touch = event.targetTouches[0];
 			const height = (touch.pageY - this.touchInfo.pageY) / 2;
 
-			pull.style.height = height + 'px';
+			this.$store.commit('setPullRefresh', { height: height });
 			if (!this.touchInfo.pullEnough && height >= this.pullHeight) {
 				this.touchInfo.pullEnough = true;
-				const icon = pull.querySelector('.icon');
-				icon.classList.add('rotate');
+				this.$store.commit('setPullRefresh', { text: '释放立即刷新', hasRotate: true });
 			}
 			else if (this.touchInfo.pullEnough && height < this.pullHeight) {
 				this.touchInfo.pullEnough = false;
-				const icon = pull.querySelector('.icon');
-				icon.classList.remove('rotate');
+				this.$store.commit('setPullRefresh', { text: '下拉刷新', hasRotate: false });
 			}
 		},
 		touchend (event) {
-			const pull = this.$el.querySelector('.pull-refresh');
-			let h = pull.style.height;
-			h = Number(h.substr(0, h.length - 2));
+			let h = this.$store.state.pullRefresh.height;
 			const lastHeight = h >= this.pullHeight ? this.pullHeight : 0;
 
 			this.anim(this, lastHeight).then(() => {
 				if (lastHeight !== 0) {
-					const icon = pull.querySelector('.icon');
-					icon.classList.add('loading');
-					this.$store.commit('setPullRefresh', { text: '正在刷新...' });
+					this.$store.commit('setPullRefresh', { text: '正在刷新...', hasLoading: true });
 					setTimeout(() => {
-						pull.classList.add('success');
-						this.$store.commit('setPullRefresh', { text: '刷新成功' });
+						this.$store.commit('setPullRefresh', { text: '刷新成功', hasSuccess: true });
 						setTimeout(() => {
 							this.anim(this, 0).then(() => {
-								pull.classList.remove('success');
-								icon.classList.remove('loading');
-								this.$store.commit('setPullRefresh', { text: '下拉刷新' });
+								this.$store.commit('setPullRefresh', {
+									text: '下拉刷新',
+									hasRotate: false,
+									hasLoading: false,
+									hasSuccess: false,
+								});
 								this.touchInfo.pullEnough = false;
 							})
 						}, 500);
