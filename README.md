@@ -26,7 +26,7 @@
 ### 安装与运行
 
 ```bash
-# 安装依赖
+# 安装依赖（如果安装sqlite3失败看最后面）
 $ npm i
 
 # 运行，请手动在浏览器打开localhost:3000
@@ -38,3 +38,7 @@ $ npm run build
 # 增加supervisor与inspect，方便后台Node.js的开发、调试
 $ npm run debug
 ```
+
+### sqlite3安装失败
+
+安装sqlite3需要的一些依赖源于不稳定的网站（国外），如果不稳定时，可以切换到`sqlite3-windows`分支或`sqlite3-MacOS`分支直接克隆我安装好的sqlite3文件，详见分支说明。
