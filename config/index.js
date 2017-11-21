@@ -27,7 +27,17 @@ module.exports = {
     autoOpenBrowser: false,
     assetsSubDirectory: 'static',
     assetsPublicPath: '/',
-    proxyTable: {},
+    proxyTable: {
+        '/api': {
+            //原本是发送到3000端口，这里设置为代理到4000端口
+            //用ip而不能用localhost，也不能用127.0.0.1
+            target: 'http://192.168.10.187:4000',
+            changeOrigin: true,
+            pathRewrite: {
+                '^/api': '/api'
+            }
+        }
+    },
     // CSS Sourcemaps off by default because relative paths are "buggy"
     // with this option, according to the CSS-Loader README
     // (https://github.com/webpack/css-loader#sourcemaps)
