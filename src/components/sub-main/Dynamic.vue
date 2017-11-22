@@ -18,8 +18,6 @@ export default {
 	},
 	methods: {
 		test () {
-			// console.log(Velocity)
-			// console.log(Resource,99)
 		},
 		loadding () {
 			this.$store.dispatch('loadding', { onShow: true, text: '加载文字...', time: 1500 });

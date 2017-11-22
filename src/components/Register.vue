@@ -25,6 +25,7 @@
 </template>
 
 <script>
+const md5 = require('md5');
 export default {
 	data () {
 		return {
