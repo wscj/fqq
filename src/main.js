@@ -4,7 +4,7 @@ import router from './router'
 import Resource from 'vue-resource'
 import store from './store'
 import fn from './assets/js/fn'
-import Velocity from 'velocity-animate' // 引入进来直接成为全局函数，可在所有组件中直接使用
+import 'velocity-animate' // 引入进来直接生成全局函数Velocity，可在所有组件中使用
 
 Vue.config.productionTip = false;
 Vue.use(Resource);
