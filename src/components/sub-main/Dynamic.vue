@@ -18,15 +18,8 @@ export default {
 	},
 	methods: {
 		test () {
-			// const param = { account: '9999', pwd: '123' }
-			// this.$http.post('/register', param).then(
-			// 	resp => {
-			// 		console.log(resp);
-			// 	},
-			// 	resp => {
-			// 		console.log(resp);
-			// 	}
-			// )
+			// console.log(Velocity)
+			// console.log(Resource,99)
 		},
 		loadding () {
 			this.$store.dispatch('loadding', { onShow: true, text: '加载文字...', time: 1500 });

@@ -16,3 +16,4 @@ yarn-error.log*
 fqq.db
 test.js
 fqq.gif
+package-lock.json
