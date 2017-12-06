@@ -18,6 +18,7 @@
 			</div>
 		</div>
 		<div class="center">
+			<v-list></v-list>
 		</div>
 		<div class="bottom">
 			<i class="temperature">31°</i>
@@ -31,9 +32,11 @@
 </template>
 
 <script>
+import vList from '../common/list'
 export default {
 	data () {
 		return {
+
 		}
 	},
 	methods: {
@@ -43,6 +46,9 @@ export default {
 		onerror (e) {
 			e.target.src = '/static/img/default.jpg';
 		}
+	},
+	components: {
+		vList
 	}
 }
 </script>
