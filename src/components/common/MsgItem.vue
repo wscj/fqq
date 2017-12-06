@@ -37,6 +37,9 @@ export default {
 		border-bottom: 1px solid #e6e6e6;
 		text-align: left;
 	}
+	.msg-item:active {
+		background-color: #edfaff;
+	}
 	.avatar {
 		display: flex;
 		width: px2rem(240px);

@@ -51,4 +51,7 @@ export default {
 			}
 		}
 	}
+	.group-item:active {
+		background-color: #f5f5f5;
+	}
 </style>

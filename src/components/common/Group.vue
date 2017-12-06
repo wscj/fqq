@@ -62,6 +62,9 @@ export default {
 			padding: 0 px2rem(60px);
 		}
 	}
+	.group:active {
+		background-color: #f5f5f5;
+	}
 	ul {
 		height: 0;
 		overflow: hidden;
