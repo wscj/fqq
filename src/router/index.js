@@ -37,8 +37,11 @@ const router = new Router({
             path: '/contacts',
             component: Contacts,
             children: [{
-            	path: '/',
+            	path: '/contacts/',
             	component: FriendsList
+            }, {
+                path: '/contacts/*',
+                component: FriendsList
             }]
         }, {
             path: '/dynamic',
