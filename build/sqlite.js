@@ -1,10 +1,7 @@
 /**
  * * sqlite数据库模块
  * * 该模块的接口统一采用异步的方式，所以没有返回值，都是靠回调函数传递数据。
- * * 如接口需要返回数据则参数中必须有一个回调函数，并且该函数的参数统一为一个object对象，其中必须包含一个状态码error，状态码意义如下：
- * 	+ 0: 运行正常无错误
- * 	+ 1: 不明确异常
- *  + 2: ...
+ * 
  * @module Sqlite
  */
 (function(Sqlite) {
@@ -192,13 +189,28 @@
 		(function exec(sqls) {
 			if (sqls.length) {
 				db.run(sqls.shift(), (err) => {
-					err ? console.error(err) : exec(sqls);
+					if (err) {
+						throw new Error(err);
+					}
+					exec(sqls);
 				});
 			}
 			else {
 				Sqlite.isInited = true;
 			}
 		}(sqls));
+	}
+
+	/**
+	 * 校验接口的参数
+	 * @param  {Array} params 必须的参数，每一项为参数名称
+	 */
+	function verify(arg, params) {
+		params.forEach(param => {
+			if (arg[param] === undefined) {
+				throw new Error(`缺少参数${param}`);
+			}
+		});
 	}
 
 	/**
@@ -211,13 +223,16 @@
 	 * @param {string} arg.msg 消息内容
 	 */
 	Sqlite.addMsg = function(arg) {
+		verify(arg, ['msg']);
 		const cID = Math.min(arg.fromID, arg.toID) + '_' + Math.max(arg.fromID, arg.toID);
 		const sql = `
 			insert into t_msg (from_id, to_id, conversation_id, group_id, content, time)
 			values (${arg.fromID}, ${arg.toID}, '${cID}', ${arg.groupID || 0}, '${arg.msg}', strftime('%Y-%m-%d %H:%M:%f', 'now', 'localtime'))
 		`;
 		db.run(sql, err => {
-			err && console.error(err);
+			if (err) {
+				throw new Error(err);
+			}
 		});
 	}
 
@@ -232,6 +247,7 @@
 	 * @param {function} arg.callback 回调函数，`list`为返回的会话列表
 	 */
 	Sqlite.getConversation = function(arg) {
+		verify(arg, ['uid', 'friendID', 'callback']);
 		const sql = `
 			select a.*, b.account
 			from (
@@ -245,8 +261,8 @@
 			where  a.from_id = b.rowid
 		`;
 		db.all(sql, (err, rows) => {
-			err && console.error(err);
-			if (!err && arg.callback) {
+			err && arg.callback(err);
+			if (!err) {
 				const list  = rows.map(row => {
 					return {
 						conversation_id: row.rowid,
@@ -256,9 +272,9 @@
 						avatar: row.account
 					}
 				});
-				arg.callback({ error: 0, list: list });
+				arg.callback(null, list);
 			}
-		})
+		});
 	}
 
 	/**
@@ -269,6 +285,7 @@
 	 * @param {function} arg.callback 参数`list`为返回好友列表信息
 	 */
 	Sqlite.getFriendList = function(arg) {
+		verify(arg, ['uid', 'callback']);
 		const sql = `select b.*, a.rowid, a.name as groupName from 
 						(select rowid, * from t_friend_group where user_id = ${arg.uid}) a
 					left join 
@@ -280,8 +297,8 @@
 					on a.rowid = b.friend_group_id
 					order by a.rowid desc`;
 		db.all(sql, (err, rows) => {
-			err && console.error(err);
-			if (!err && arg.callback) {
+			err && arg.callback(err);
+			if (!err) {
 
 				const list = [];
 				let groupName;
@@ -315,7 +332,7 @@
 					}
 				});
 
-				arg.callback({ error: 0, list: list });
+				arg.callback(null, list);
 			}
 		});
 	}
@@ -327,6 +344,7 @@
 	 * @param {function} arg.callback 参数`list`为返回消息列表信息
 	 */
 	Sqlite.getMsgList = function(arg) {
+		verify(arg, ['callback']);
 		const sql = `
 			select a.*, c.name, c.account, c.rowid as friend_id
 			from   t_msg a
@@ -340,14 +358,13 @@
 			order  by time desc
 		`;
 		db.all(sql, (err, rows) => {
-			err && console.error(err);
-			if (!err && arg.callback) {
+			err && arg.callback(err);
+			if (!err) {
 				const list = rows.map(function(row) {
 					const now = new Date();
 					const today = new Date(`${now.getFullYear()}-${now.getMonth() + 1}-${now.getDate()}`);
 					const t = new Date(row.time);
 					const lastTime = t < today ? row.time.substr(0, 10) : row.time.substr(row.time.length - 5, 5);
-					//`${t.getHours()}:${t.getMinutes()}`
 					return {
 						friendID: row.friend_id,
 						name: row.name,
@@ -356,7 +373,7 @@
 						lastMsg: row.content
 					}
 				});
-				arg.callback({ error: 0, list: list });
+				arg.callback(null, list);
 			}
 		});
 	}
@@ -370,11 +387,13 @@
 	 * @param {function} arg.callback 参数`list`为返回登录用户的信息
 	 */
 	Sqlite.login = function(arg) {
+		verify(arg, ['account', 'pwd', 'callback']);
 		const sql = `select rowid, * from t_user 
 					where account = '${arg.account}'
 					and pwd = '${arg.pwd}'`;
 		db.get(sql, (err, row) => {
-			!err && arg.callback && arg.callback({ error: 0, list: [row] });
+			err && arg.callback(err);
+			!err && arg.callback(null, [row]);
 		});
 	}
 
@@ -385,29 +404,31 @@
 	 * @param {string} arg.pwd 注册密码
 	 * @param {function} arg.callback 回调函数，错误码
 	 *
-	 * |error|说明|
+	 * |errorCode|说明|
 	 * |--|--|
 	 * |0|注册成功|
 	 * |1|帐号已被注册|
 	 */
 	Sqlite.register = function(arg) {
+		verify(arg, ['account', 'pwd', 'callback']);
 		const sql = `select 1 from t_user where account = ${arg.account}`;
 		db.get(sql, (err, row) => {
-			err && console.error(err);
-			if (!err) {
-				// 帐号未被注册
-				if (row === undefined) {
-					const sqlStr = `insert into t_user (account, pwd) 
-						values ('${arg.account}', '${arg.pwd}')`
-					db.run(sqlStr, err => {
-						err && console.log(err);
-						!err && arg.callback && arg.callback({ error: 0 });
-					});
-				}
-				// 帐号已被注册
-				else {
-					arg.callback && arg.callback({ error: 1 });
-				}
+			if (err) {
+				arg.callback(err);
+				return;
+			}
+			// 帐号未被注册
+			if (row === undefined) {
+				const sqlStr = `insert into t_user (account, pwd) 
+					values ('${arg.account}', '${arg.pwd}')`
+				db.run(sqlStr, err => {
+					err && arg.callback(err);
+					!err && arg.callback(null, 0);
+				});
+			}
+			// 帐号已被注册
+			else {
+				arg.callback(null, 1);
 			}
 		});
 	}

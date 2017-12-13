@@ -29,14 +29,16 @@
 # 安装依赖（如果安装sqlite3失败看最后面）
 $ npm i
 
-# 运行，请手动在浏览器打开localhost:3000
-$ npm run dev
+# 预览运行，请手动在浏览器打开localhost:3000
+$ npm run start
 
 # 打包成静态文件
 $ npm run build
 
-# 增加supervisor与inspect，方便后台Node.js的开发、调试
-$ npm run debug
+# 调试运行
+# 使用supervisor与inspect，方便后台Node.js的开发、调试
+# 需要先全局安装supervisor，chrome上配置inspect
+$ npm run dev
 ```
 
 ### 功能（整理中）
