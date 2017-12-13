@@ -361,10 +361,10 @@
 			err && arg.callback(err);
 			if (!err) {
 				const list = rows.map(function(row) {
-					const now = new Date();
-					const today = new Date(`${now.getFullYear()}-${now.getMonth() + 1}-${now.getDate()}`);
+					const todayStr = new Date().format('yyyy-MM-dd');
+					const today = new Date(todayStr);
 					const t = new Date(row.time);
-					const lastTime = t < today ? row.time.substr(0, 10) : row.time.substr(row.time.length - 5, 5);
+					const lastTime = t < today ? row.time.substr(0, 10) : row.time.substr(11, 5);
 					return {
 						friendID: row.friend_id,
 						name: row.name,

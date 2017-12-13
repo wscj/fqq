@@ -3,6 +3,7 @@ const Sqlite = require('./sqlite');
 const path = require('path');
 const multer = require('multer');
 const fse = require('fs-extra');
+require('../src/assets/js/Date.js')
 
 fse.ensureDirSync('upload-files');
 

@@ -3,8 +3,9 @@ import App from './App'
 import router from './router'
 import Resource from 'vue-resource'
 import store from './store'
-import fn from './assets/js/fn'
+import fn from './assets/js/fn.js'
 import 'velocity-animate' // 引入进来直接生成全局函数Velocity，可在所有组件中使用
+import './assets/js/Date.js'
 
 Vue.config.productionTip = false;
 Vue.use(Resource);
