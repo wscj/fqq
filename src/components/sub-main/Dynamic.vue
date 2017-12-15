@@ -4,7 +4,6 @@
 		<input type="button" value="提示窗口"  @click="prompt">
 		<input type="file" name="upload" @change="uploadChange">
 		<input type="button" value="上传文件"  @click="upload">
-		<!-- <input type="button" value="test"  @click="test"> -->
 	</div>
 </template>
 
@@ -37,14 +36,10 @@ export default {
 					fn: () => {
 						const formData = new FormData();
 						formData.append('file', file);
-						this.$http.post('/upload', formData).then(
-							(resp) => {
+						this.$http.post('/upload', formData)
+							.then(resp => {
 								this.$store.dispatch('tip', { onShow: true, text: '文件上传成功' });
-							},
-							(resp) => {
-								console.log('fail', resp);
-							}
-						)
+							});
 					}
 				}]
 			}

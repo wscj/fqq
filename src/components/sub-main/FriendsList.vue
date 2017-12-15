@@ -23,16 +23,12 @@ export default {
 	},
 	methods: {
 		getData: function() {
-			this.$http.get('/getFriendList').then(
-				(resp) => {
-					if (toString.call(resp.body.list) === '[object Array]') {
-						this.groups = resp.body.list
+			this.$http.get('/getFriendList')
+				.then(resp => {
+					if (toString.call(resp.data.list) === '[object Array]') {
+						this.groups = resp.data.list
 					}
-				},
-				(resp) => {
-					console.error(resp);
-				}
-			)
+				});
 		}
 	}
 }

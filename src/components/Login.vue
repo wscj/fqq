@@ -57,13 +57,13 @@ export default {
 			}
 			else {
 				const options = { params: { account: this.account.trim(), pwd: md5(this.pwd.trim()) } };
-				this.$http.get('/login', options).then(
-					(resp) => {
-						if (resp.body.token) {
-							localStorage.token = resp.body.token;
-							localStorage.user = JSON.stringify(resp.body.user);
+				this.$http.get('/login', options)
+					.then(resp => {
+						if (resp.data.token) {
+							localStorage.token = resp.data.token;
+							localStorage.user = JSON.stringify(resp.data.user);
 							const to = this.$route.query.redirect || '/';
-							this.$store.commit('setUser', resp.body.user);
+							this.$store.commit('setUser', resp.data.user);
 							this.$store.dispatch('loadding', { onShow: true, text: '故意延迟，等一下咯！！', time: 1000 });
 							setTimeout(() => {
 								this.$router.replace({ path: to });
@@ -72,11 +72,12 @@ export default {
 							}, 1000);
 						}
 						else {
-							this.fn.warn(resp.body.error);
+							this.fn.warn(resp.data.error);
 						}
-					},
-					(resp) => { console.error('fail', resp); }
-				)
+					})
+					.catch(err => {
+						console.error(err);
+					});
 			}
 		},
 		gotoRegister () {

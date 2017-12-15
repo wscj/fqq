@@ -32,16 +32,11 @@ export default {
 	},
 	methods: {
 		getData () {
-			this.$http.get('/getMsgList').then(
-				(resp) => {
-					if (toString.call(resp.body.list) === '[object Array]') {
-						this.chats = resp.body.list;
+			this.$http.get('/getMsgList').then(resp => {
+					if (toString.call(resp.data.list) === '[object Array]') {
+						this.chats = resp.data.list;
 					}
-				},
-				(resp) => {
-					console.error(resp);
-				}
-			)
+				});
 		},
 		anim (_this, lastHeight) {
 

@@ -23,7 +23,7 @@ const upload = multer({ storage: storage });
 router.use(function(req, res, next) {
 
 	function unvalid(res) {
-		// res.append('Verify', 'fail');
+		// 身份验证失败
 		res.status(403).sendFile(path.join(__dirname, '../index.html'));
 	}
 

@@ -1,35 +1,39 @@
 import Vue from 'vue'
 import App from './App'
 import router from './router'
-import Resource from 'vue-resource'
 import store from './store'
 import fn from './assets/js/fn.js'
 import 'velocity-animate' // 引入进来直接生成全局函数Velocity，可在所有组件中使用
 import './assets/js/common/Date.js'
+import axios from 'axios'
 
 Vue.config.productionTip = false;
-Vue.use(Resource);
+Vue.http = Vue.prototype.$http = axios;
 Vue.use(fn);
+axios.bind(Vue);
 
-//在发送http时带上token验证信息
-Vue.http.interceptors.push(function(request, next) {
+// 为所有请求的头部带上token
+axios.interceptors.request.use(function (config) {
+  config.headers['x-access-token'] = localStorage.token;
+  return config;
+}, function (error) {
+  return Promise.reject(error);
+});
 
-  // modify method
-  // request.method = 'POST';
-  request.headers.set('x-access-token', localStorage.token);
-
-  // continue to next interceptor
-  next(function(response) {
-    //token校验失败，服务器拒绝
-    if (response.status === 403) {
-    	this.$router.push({
-    		path: '/login',
-    		query: {
-    			redirect: this.$route.fullPath
-    		}
-    	});
-    }
-  });
+axios.interceptors.response.use(function (response) {
+  return response;
+}, function (error) {
+  // token校验失败，服务器拒绝
+  if (error.toString().indexOf('code 403') > -1) {
+    this.$router.push({
+      path: '/login',
+      query: {
+        redirect: this.$route.fullPath
+      }
+    });
+    return;
+  }
+  return Promise.reject(error);
 });
 
 /* eslint-disable no-new */
@@ -38,4 +42,4 @@ new Vue({
   router,
   store,
   render: h => h(App)
-})
+});

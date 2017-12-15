@@ -62,17 +62,17 @@ export default {
 			}
 
 			const param = { account: this.account, pwd: md5(this.pwd) }
-			this.$http.post('/register', param).then(
-				resp => {
-					if (resp.body.error === 1) {
+			this.$http.post('/register', param)
+				.then(resp => {
+					if (resp.data.error === 1) {
 						this.errorMsg = '**帐号已存在**'
 						this.animate();
 					}
-					else if (resp.body.error === 2) {
+					else if (resp.data.error === 2) {
 						this.errorMsg = '**帐号不符合规范**'
 						this.animate();
 					}
-					else if (resp.body.error === 0) {
+					else if (resp.data.error === 0) {
 						this.$store.dispatch('tip', { 
 							onShow: true, 
 							text: '注册完成',
@@ -81,11 +81,10 @@ export default {
 							}
 						});
 					}
-				},
-				resp => {
-					console.log(resp);
-				}
-			)
+				})
+				.catch(err => {
+					console.error(err)
+				});
 		},
 		animate () {
 			const div = this.$el.querySelector('.error');

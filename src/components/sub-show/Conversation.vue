@@ -109,21 +109,11 @@ export default {
 	created () {
 		this.title = this.$route.query.name;
 		this.friendAccount = this.$route.query.account;
-		this.$http.get('/getConversation', { params: { friendID: this.$route.query.friendID } }).then(
-			resp => {
-				this.list = resp.body.list;
-			},
-			resp => {
-				console.log(resp, 'fail');
-			}
-		)
+		this.$http.get('/getConversation', { params: { friendID: this.$route.query.friendID } })
+			.then(resp => {
+				this.list = resp.data.list;
+			});
 	}
-	// watch: {
-	// 	'$route' (to, from) {
-	// 		console.log(to);
-	// 		console.log(from);
-	// 	}
-	// },
 }
 </script>
 
