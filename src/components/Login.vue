@@ -7,7 +7,7 @@
 			<div class="account">
 				<b class="user"></b>
 				<input type="number" id="account" @input="input" v-model="account"
-					 placeholder="4~11位数字帐号" autocomplete="off">
+					 placeholder="4~11位数字帐号" autocomplete="off" autofocus="autofocus">
 			</div>
 			<div class="password">
 				<b class="pwd"></b>
@@ -86,9 +86,6 @@ export default {
 			e.target.src = '/static/img/default.jpg';
 		}
 	},
-	mounted: function() {
-		this.$el.querySelector('#account').focus();
-	}
 }
 </script>
 
