@@ -10,9 +10,9 @@
 
 * 前端
 	* Vue.js
-	* vue-resource
 	* vuex
 	* vue-router
+	* axios
 	* sass
 	* es6
 * 后端
