@@ -3,9 +3,10 @@ import App from './App'
 import router from './router'
 import store from './store'
 import fn from './assets/js/fn.js'
+import axios from 'axios'
 import 'velocity-animate' // 引入进来直接生成全局函数Velocity，可在所有组件中使用
 import './assets/js/common/Date.js'
-import axios from 'axios'
+import './assets/css/base.css'
 
 Vue.config.productionTip = false;
 Vue.http = Vue.prototype.$http = axios;
@@ -43,3 +44,4 @@ new Vue({
   store,
   render: h => h(App)
 });
+console.log(new Date().format('yyyy-MM-dd hh:mm:ss'))
