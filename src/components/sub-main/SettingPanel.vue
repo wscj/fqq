@@ -103,6 +103,7 @@ export default {
 	.center {
 		flex: 1;
 		position: relative;
+		overflow-y: auto;
 	}
 	.temperature {
 		display: block;
