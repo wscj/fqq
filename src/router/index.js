@@ -1,19 +1,19 @@
 import Vue from 'vue'
 import Router from 'vue-router'
 import MainPanel from '@/components/MainPanel'
-import ShowPanel from '@/components/ShowPanel'
 import MsgList from '@/components/sub-main/MsgList'
-import Contacts from '@/components/sub-main/Contacts'
-import Dynamic from '@/components/sub-main/Dynamic'
-import FriendsList from '@/components/sub-main/FriendsList'
-import Login from '@/components/Login'
-import Setting from '@/components/sub-show/Setting'
-import NoTransitionPanel from '@/components/NoTransitionPanel'
-import SearchPage from '@/components/sub-no-trans/SearchPage'
-import Conversation from '@/components/sub-show/Conversation'
-import Register from '@/components/Register'
 
-import Temp from '@/components/Temp'
+// 以下组件通过路由懒加载的方式加载
+const ShowPanel            = () => import('@/components/ShowPanel')
+const Register             = () => import('@/components/Register')
+const Login                = () => import('@/components/Login')
+const Conversation         = () => import('@/components/sub-show/Conversation')
+const SearchPage           = () => import('@/components/sub-no-trans/SearchPage')
+const NoTransitionPanel    = () => import('@/components/NoTransitionPanel')
+const Setting              = () => import('@/components/sub-show/Setting')
+const FriendsList          = () => import('@/components/sub-main/FriendsList')
+const Dynamic              = () => import('@/components/sub-main/Dynamic')
+const Contacts             = () => import('@/components/sub-main/Contacts')
 
 import store from '../store'
 
