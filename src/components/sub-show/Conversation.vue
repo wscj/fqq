@@ -2,8 +2,11 @@
 	<div class="conversation" @keyup.enter="send">
 		<v-header @leftClick="goback" :bTitle="title"></v-header>
 		<div class="content">
-			<v-msg v-for="(item, key, index) in list" :avatar="item.avatar" 
-				:msg="item.msg" :dir="item.dir" :key="index"></v-msg>
+			<v-msg v-for="(item, key, index) in list" 
+				:avatar="item.avatar"
+				:msg="item.msg"
+				:dir="item.dir"
+				:key="index"></v-msg>
 		</div>
 		<div class="footer">
 			<div class="input">
