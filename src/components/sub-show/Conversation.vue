@@ -7,7 +7,8 @@
 		</div>
 		<div class="footer">
 			<div class="input">
-				<input type="text" class="text" v-model="text" >
+				<!-- <input type="text" class="text" v-model="text" > -->
+				<v-chat-input></v-chat-input>
 				<input type="button" value="发送" class="button" :style="styleObj" @click="send" >
 			</div>
 			<div class="toolbar">
@@ -26,26 +27,12 @@
 <script>
 import Header from '../common/ConversationHeader'
 import Msg from '../common/Msg'
+import vChatInput from '../common/ChatInput'
 export default {
 	data () {
 		return {
 			text: '',
 			list: [],
-			// list: [{
-			// 	avatar: '6664',
-			// 	msg: '在吗？'
-			// }, {
-			// 	avatar: '6666',
-			// 	msg: '不在啊，我没都在线！！',
-			// 	dir: 'right'
-			// }, {
-			// 	avatar: '6664',
-			// 	msg: '你是猪啊[抠鼻]'
-			// }, {
-			// 	avatar: '6666',
-			// 	msg: '。。。',
-			// 	dir: 'right'
-			// }],
 			title: '',
 			friendAccount: '',
 			autoReplyMsg: ['找我啥事？', '啥？你说啥？']
@@ -61,7 +48,8 @@ export default {
 	},
 	components: {
 		vHeader: Header,
-		vMsg: Msg
+		vMsg: Msg,
+		vChatInput
 	},
 	methods: {
 		goback () {
@@ -130,20 +118,13 @@ export default {
 		overflow-y: auto;
 	}
 	.footer {
-		height: px2rem(225px);
+		// height: px2rem(225px);
 	}
 	.input {
-		height: px2rem(99px);
+		// height: px2rem(99px);
 		display: flex;
+		flex-wrap: wrap-reverse;
 		margin-bottom: px2rem(6px);
-	}
-	.text {
-		flex: 1;
-		border: none;
-		margin: 0 px2rem(15px) 0 px2rem(18px);
-		border-radius: px2rem(9px);
-		padding: px2rem(30px);
-		font-size: px2rem(42px);
 	}
 	.button {
 		width: px2rem(150px);
@@ -153,6 +134,7 @@ export default {
 		color: #f1f2f3;
 		background-color: #dddee2;
 		font-size: px2rem(42px);
+		height: px2rem(101px);
 	}
 	.toolbar {
 		height: px2rem(120px);

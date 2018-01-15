@@ -44,4 +44,3 @@ new Vue({
   store,
   render: h => h(App)
 });
-console.log(new Date().format('yyyy-MM-dd hh:mm:ss'))
