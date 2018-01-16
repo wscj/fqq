@@ -1,5 +1,5 @@
 <template>
-	<div class="conversation" @keyup.enter="send">
+	<div class="conversation">
 		<v-header @leftClick="goback" :bTitle="title"></v-header>
 		<div class="content">
 			<v-msg v-for="(item, key, index) in list" 
@@ -10,9 +10,16 @@
 		</div>
 		<div class="footer">
 			<div class="input">
-				<!-- <input type="text" class="text" v-model="text" > -->
-				<v-chat-input></v-chat-input>
-				<input type="button" value="发送" class="button" :style="styleObj" @click="send" >
+				<v-chat-input
+					@sendValue="send"
+					@btnDisabled="btnDisabled"
+					:emitSend="emitSend"></v-chat-input>
+				<input
+					type="button"
+					value="发送"
+					class="button"
+					:style="styleObj"
+					@click="emitSend = 1 - emitSend" >
 			</div>
 			<div class="toolbar">
 				<b name="record"></b>
@@ -28,42 +35,46 @@
 </template>
 
 <script>
-import Header from '../common/ConversationHeader'
-import Msg from '../common/Msg'
+import vHeader from '../common/ConversationHeader'
+import vMsg from '../common/Msg'
 import vChatInput from '../common/ChatInput'
 export default {
 	data () {
 		return {
-			text: '',
 			list: [],
 			title: '',
 			friendAccount: '',
-			autoReplyMsg: ['找我啥事？', '啥？你说啥？']
+			autoReplyMsg: ['找我啥事？', '啥？你说啥？'],
+			emitSend: 0,
+			disabled: true
 		}
 	},
 	computed: {
 		styleObj () {
 			return {
-				color: this.text.length ? '#fff' : '#f1f2f3',
-				background: this.text.length ? '#10b5f6' : '#dddee2'
+				color: this.disabled ? '#f1f2f3' : '#fff',
+				background: this.disabled ? '#dddee2' : '#10b5f6'
 			}
 		}
 	},
 	components: {
-		vHeader: Header,
-		vMsg: Msg,
+		vHeader,
+		vMsg,
 		vChatInput
 	},
 	methods: {
+		btnDisabled (disabled) {
+			this.disabled = disabled;
+		},
 		goback () {
 			this.$router.back();
 		},
-		send () {
-			if (this.text.length) {
+		send (text) {
+			if (text.length) {
 				//发送消息
 				this.list.push({
 					avatar: JSON.parse(localStorage.user).account,
-					msg: this.text,
+					msg: text,
 					dir: 'right'
 				});
 				var content = this.$el.querySelector('.content');
@@ -74,16 +85,17 @@ export default {
 				this.$http.post('/addMsg', {
 					fromID: JSON.parse(localStorage.user).rowid,
 					toID: this.$route.query.friendID,
-					msg: this.text
+					msg: text
 				});
-				this.text = '';
+				text = '';
 
 				//自动回复，延迟半秒，体验更真实
 				setTimeout(() => {
 					let msg = this.autoReplyMsg.shift() || '我只是个机器人，听不懂你说啥。。。';
 					this.list.push({
 						avatar: this.friendAccount,
-						msg: msg
+						msg: msg,
+						dir: 'left'
 					});
 					this.$http.post('/addMsg', {
 						fromID: this.$route.query.friendID,
@@ -95,7 +107,7 @@ export default {
 					}, 60);
 				}, 500);
 			}
-		}
+		},
 	},
 	created () {
 		this.title = this.$route.query.name;
