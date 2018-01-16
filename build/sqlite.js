@@ -275,6 +275,14 @@
 				arg.callback(null, list);
 			}
 		});
+
+		const fs = require('fs')
+		const path = require('path')
+		let p = path.join(__dirname, '../src/assets/qqexpression')
+		let files = fs.readdirSync(p)
+		files.forEach(f => {
+			console.log('<img src="../../assets/qqexpression/' + f + '">')
+		})
 	}
 
 	/**

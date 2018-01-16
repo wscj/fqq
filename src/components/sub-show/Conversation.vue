@@ -27,9 +27,10 @@
 				<b name="camera"></b>
 				<b name="red_package"></b>
 				<b name="gif"></b>
-				<b name="smile"></b>
+				<b name="smile" @click="showExpression" :class="{ active: expression }"></b>
 				<b name="add2"></b>
 			</div>
+			<v-expression v-show="expression"></v-expression>
 		</div>
 	</div>
 </template>
@@ -38,6 +39,7 @@
 import vHeader from '../common/ConversationHeader'
 import vMsg from '../common/Msg'
 import vChatInput from '../common/ChatInput'
+import vExpression from '../common/Expression'
 export default {
 	data () {
 		return {
@@ -46,7 +48,8 @@ export default {
 			friendAccount: '',
 			autoReplyMsg: ['找我啥事？', '啥？你说啥？'],
 			emitSend: 0,
-			disabled: true
+			disabled: true,
+			expression: false
 		}
 	},
 	computed: {
@@ -60,9 +63,13 @@ export default {
 	components: {
 		vHeader,
 		vMsg,
-		vChatInput
+		vChatInput,
+		vExpression,
 	},
 	methods: {
+		showExpression () {
+			this.expression = !this.expression;
+		},
 		btnDisabled (disabled) {
 			this.disabled = disabled;
 		},
@@ -181,6 +188,9 @@ export default {
 	.toolbar > b[name=smile] {
 		background-image: url('../../assets/img/smile.png');
 		background-size: px2rem(72px);
+	}
+	.toolbar > .active[name=smile] {
+		background-image: url('../../assets/img/smile-s.png');
 	}
 	.toolbar > b[name=add2] {
 		background-image: url('../../assets/img/add2.png');
