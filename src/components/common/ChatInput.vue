@@ -3,14 +3,16 @@
     class="chat-input"
     contenteditable="true"
     spellcheck="false"
+    :id="editID"
     @keyup.enter="enter"
+    @click="click"
     @input="input">
   </div>
 </template>
 
 <script>
 export default {
-  props: ['emitSend'],
+  props: ['emitSend', 'editID'],
   data () {
     return {
       text: '',
@@ -29,6 +31,9 @@ export default {
       this.text = '';
       this.$el.innerText = '';
       this.$emit('btnDisabled', true);
+    },
+    click () {
+      this.$emit('blind', getSelection().getRangeAt(0));
     }
   },
   watch: {

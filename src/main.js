@@ -6,6 +6,7 @@ import fn from './assets/js/fn.js'
 import axios from 'axios'
 import 'velocity-animate' // 引入进来直接生成全局函数Velocity，可在所有组件中使用
 import './assets/js/common/Date.js'
+import './assets/qqexpression/expression.js'
 import './assets/css/base.css'
 
 Vue.config.productionTip = false;

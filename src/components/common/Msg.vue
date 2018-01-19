@@ -41,19 +41,24 @@ export default {
 	.right:after {
 		content: '';
 		position: absolute;
-		top: px2rem(38px);
+		top: px2rem(44px);
 		display: block;
-		width: px2rem(50px);
-		height: px2rem(50px);
-		background: url('../../assets/img/chat-left.png') no-repeat;
-		background-size: px2rem(50px);
+		width: px2rem(32px);
+		height: px2rem(44px);
+		border-style: solid;
+		box-sizing: border-box;
 	}
 	.left:before {
-		left: px2rem(-32px);
+		left: px2rem(-18px);
+		border-width: px2rem(20px) px2rem(30px);
+		border-color: transparent #fff transparent transparent;
+		border-left: none;
 	}
 	.right:after {
-		background-image: url('../../assets/img/chat-right.png');
-		right: px2rem(-30px);
+		right: px2rem(-18px);
+		border-width: px2rem(20px) px2rem(30px);
+		border-color: transparent transparent transparent #10b5f6;
+		border-right: none;
 	}
 	.avatar {
 		width: px2rem(195px);

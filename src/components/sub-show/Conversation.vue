@@ -13,6 +13,8 @@
 				<v-chat-input
 					@sendValue="send"
 					@btnDisabled="btnDisabled"
+					@blind="blind"
+					:editID="editID"
 					:emitSend="emitSend"></v-chat-input>
 				<input
 					type="button"
@@ -27,10 +29,15 @@
 				<b name="camera"></b>
 				<b name="red_package"></b>
 				<b name="gif"></b>
-				<b name="smile" @click="showExpression" :class="{ active: expression }"></b>
+				<b name="smile" @click="showExpression" :class="{ active: openExpression }"></b>
 				<b name="add2"></b>
 			</div>
-			<v-expression v-show="expression"></v-expression>
+			<v-expression
+				v-show="openExpression"
+				:lastEditRange="lastEditRange"
+				:editID="editID"
+				@blind="blind"
+				@select="insertExpression"></v-expression>
 		</div>
 	</div>
 </template>
@@ -49,7 +56,9 @@ export default {
 			autoReplyMsg: ['找我啥事？', '啥？你说啥？'],
 			emitSend: 0,
 			disabled: true,
-			expression: false
+			openExpression: false,
+			lastEditRange: undefined,
+			editID: 'chatinput'
 		}
 	},
 	computed: {
@@ -67,8 +76,14 @@ export default {
 		vExpression,
 	},
 	methods: {
+		blind (range) {
+			this.lastEditRange = range;
+		},
+		insertExpression (key) {
+			// console.log(key,22)
+		},
 		showExpression () {
-			this.expression = !this.expression;
+			this.openExpression = !this.openExpression;
 		},
 		btnDisabled (disabled) {
 			this.disabled = disabled;
