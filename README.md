@@ -2,6 +2,8 @@
 |--|--|--|
 |7.9.0|4.16.2|2.5.13|
 
+注：本项目指定7.9.0版本的`Node.js`，其他版本的可能不适用
+
 ### 项目简介
 
 * 项目目的：综合性的项目提升自己的综合能力
@@ -61,4 +63,4 @@ $ npm run dev
 
 ### sqlite3安装失败
 
-安装sqlite3需要的一些依赖源于不稳定的网站（国外），如果不稳定时，可以切换到`sqlite3-windows`分支或`sqlite3-MacOS`分支直接克隆我安装好的sqlite3文件，详见分支说明。
+安装sqlite3需要的一些依赖源于不稳定的网站（国外），如果不稳定时，可以切换到[sqlite3-windows](https://github.com/wscj/fqq/tree/sqlite3-windows)分支或[sqlite3-MacOS](https://github.com/wscj/fqq/tree/sqlite3-MacOS)分支直接克隆我安装好的sqlite3文件，详见分支说明。
