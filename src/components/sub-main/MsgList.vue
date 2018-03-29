@@ -64,6 +64,7 @@ export default {
 			this.touchInfo.pageY = touch.pageY;
 		},
 		touchmove (event) {
+			event._isScroller = true
 			const touch = event.targetTouches[0];
 			const height = (touch.pageY - this.touchInfo.pageY) / 2;
 

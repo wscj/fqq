@@ -67,9 +67,17 @@ export default {
 		vLoading,
 		vPrompt,
 		vTip
+	},
+	mounted () {
+		document.body.addEventListener('touchmove', function (ev) {
+			console.log(ev._isScroller)
+			if (ev._isScroller) {
+				ev.preventDefault()
+			}
+		})
 	}
 }
 </script>
 
-<style scoped>
+<style>
 </style>
